@@ -5,7 +5,7 @@
 [R]eality
 [O]bject
 
-# 26 march 2020. In progress. Current position: Before structure 2.
+# 26 march 2020. Work still in progress. Current position: Before structure 2.
 
 # Including: Благословенный RCe.Framework, VectorKIIM, HFICWorkRespect;
 
