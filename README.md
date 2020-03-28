@@ -11,7 +11,11 @@
 
 # Including: Благословенный RCe.Framework, VectorKIIM, HFICWorkRespect;
 
-# Coming soon: Waveinspiration.
+# In progress now. EDRO.Polymer
+
+# Coming soon: Waveinspiration
+
+
 
 Screenshots, programmer's blog.
 https://vk.com/loudrepublic?w=wall-167038841_187
