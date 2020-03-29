@@ -30,7 +30,7 @@ Powered by: Благословенный RCe.Framework.
     /EDRO.SetOfTools/HFIC_CreatorsRespect/arrElectronicContactsIOTemplates.php  : Social service templates. Array arrElectronicContactsIOTemplates;
     
 # How does it works:
-    1.Fill in Load arrElectronicContactsForPublish.php;
+    1.Fill and Load arrElectronicContactsForPublish.php;
     2.Load arrElectronicContactsIOTemplates.php (eg. include);
     3.Load arrElectronicContactsForPublish.php (eg. include);
     4.Run ElectronicContactsServices.php;
