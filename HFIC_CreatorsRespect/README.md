@@ -4,8 +4,8 @@
     Multilanguage;
     Multyplatform;
     Expandable list of social communication network templates;
-     Forms templates for Input contacts  (html/js);
-     Contact list templates for Output contacts list (html/xml/txt/hfic);
+     Forms templates for input contacts  (html/js);
+     Contact list templates for output contacts list (html/xml/txt/hfic);
      
 # Usage:
      Standalone;
