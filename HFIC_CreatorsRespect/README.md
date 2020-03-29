@@ -1,4 +1,5 @@
-# HFIC_CreatorsRespect.  Contact list generator, with social network communication services templates.
+# HFIC_CreatorsRespect.  
+Contact list generator, with social network communication services templates.
 
 # Features:
     Multilanguage;
