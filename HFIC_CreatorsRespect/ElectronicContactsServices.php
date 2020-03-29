@@ -82,7 +82,7 @@ $strPlatform="IOS";
 $arrKIIM=array();
 $objNewElectronicContactsOutputHTML=new ElectronicContactServices($arrKIIM,'Output', array(
 	'_arrConstructTemplates' 	=>$arrElectronicContactIOTemplates, 
-	'_arrContacts'			=>$arrElectronicContacts,
+	'_arrContacts'			=>$arrElectronicContactsForPublish,
 	'_strLanguage'			=>$strLanguage,
 	'_strPlatform'			=>$strPlatform,
 	));
