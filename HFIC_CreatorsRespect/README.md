@@ -1,5 +1,5 @@
 # HFIC_CreatorsRespect.  
-# Contact list generator, with social network communication services templates.
+# Contact input form, and list generator, with social network communication services templates.
 Powered by: Благословенный RCe.Framework.
 
 # Currently including:
