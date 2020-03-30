@@ -9,7 +9,7 @@
 
 # Sat 27 march 2020. Continue working. 
 https://vk.com/loudrepublic?w=wall-167038841_196
-# Tue 31 march 2020. Continue working. 4 days before the time is up. When wersions must be swithed to up grade. Non compromise. Just silence, continue moving forward. Our time is only in our hands. And we are.
+# Tue 31 march 2020. Continue working. 4 days before the time is up. Before the 4th april we must switch version to up grade. Non compromise. Just silence, continue moving forward. Our time is only in our hands. And we are.
 
 # Current position: Before structure 2.
 
