@@ -1,7 +1,7 @@
 # EDRO.SetOfTools
 
 # [E]vent
-# [D]esign
+# [D]estination
 # [R]eality
 # [O]bject
 
