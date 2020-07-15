@@ -1,1 +1,1 @@
-#EDRO. Micro teemplates for hdd recorder.
+#EDRO. Micro templates for hdd recorder.
