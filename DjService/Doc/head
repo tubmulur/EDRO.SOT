@@ -1,0 +1,11 @@
+// © A.A.CheckMaRev assminog@gmail.com tubmulur@yandex.ru
+
+HEAD / HTTP/1.1
+Host: cloudrepublic.ru
+Connection: close
+
+//echo urldecode($file='/home/listeners'.$_SERVER['REQUEST_URI']);
+//header('Content-type: audio/mpeg');
+//header('Content-Disposition: filename='.$file);
+//header('Content-length:'.filesize($file));
+//header('Content-Transfer-Encoding: chunked='.$file);
