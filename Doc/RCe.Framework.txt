@@ -1,0 +1,10 @@
+© A.A.CheckMaRev assminog@gmail.com
+
+1. Documentation: RCe.FrameWork; 
+1.1. RCe.FrameWork, exists  as a philosofy of naming variables plus VectorKIM. No more tools. RCe means "Get Remote Control",  
+      so, then it is needed, afterlook your code or process it automatically, if it was written with understanding the  RCe.FrameWork.
+
+      You could see: Every variable that could be attacked to get RCE, looks like: $_strVariable1, $_intIntegerX, 
+      $_arr('_strStrinD','_intIntegerH'). The common of this variables is "$_[var_type]".  While processing your programm as a txt file, 
+      i mean as a source code, replace "$_[var_type]" with a variable filter by type function. So, in most cases, everything will be ok.
+      So have a good day :)

@@ -1,0 +1,63 @@
+#!/usr/bin/php
+<?php
+//© A.A.CheckMaRev assminog@gmail.com
+$strCreatorTypes=json_encode(array(
+	'Artist'=>array(
+		'RU'=>'Артист',
+		'EN'=>'Artist'
+		),
+	'Animations'=>array(
+		'RU'=>'Мультфильм',
+		'EN'=>'Animations'
+		),
+	'Album'=>array(
+		'RU'=>'Альбом',
+		'EN'=>'Album'
+		),
+	'Book'=>array(
+		'RU'=>'Книга',
+		'EN'=>'Book'
+		),
+	'Composer'=>array(
+		'RU'=>'Композитор',
+		'EN'=>'Compositor'
+		),
+	'Club'=>array(
+		'RU'=>'Клуб',
+		'EN'=>'Club'
+		),
+	'Dj'=>array(
+		'RU'=>'Dj',
+		'EN'=>'Dj'
+		),
+	'Label'=>array(
+		'RU'=>'Лейбл',
+		'EN'=>'Label'
+		),
+	'MusicGroup'=>array(
+		'RU'=>'Группа',
+		'EN'=>'Group'
+		),
+	'MC'=>array(
+		'RU'=>'MC',
+		'EN'=>'MC'
+		),
+	'Musician'=>array(
+		'RU'=>'Музыкант',
+		'EN'=>'Musician'
+		),
+	'Radio'=>array(
+		'RU'=>'Радио',
+		'EN'=>'Radio'
+		),
+	'Studio'=>array(
+		'RU'=>'Студия',
+		'EN'=>'Studio'
+		),
+	'VIA'=>array(
+		'RU'=>'ВИА',
+		'EN'=>'VIA'
+		),
+	));
+file_put_contents('.CreatorTypes.json', $strCreatorTypes);
+?>
