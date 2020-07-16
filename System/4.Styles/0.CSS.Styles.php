@@ -28,6 +28,7 @@ $strDynascreenStyle='
 
 	/*Horizontal*/
 	.HOL		{left	:0px;}
+	.H35pc		{left	:35%;}
 	.HOR		{right	:0px;}
 
 	/*//EDRO matrix*/
@@ -43,6 +44,7 @@ $strDynascreenStyle='
 	.fixed		{display:block; position:fixed;}
 	.left		{float:left;}
 	.right		{float:right;}
+	.cursor		{cursor:pointer;}
 	.scrollerY	{overflow-x:hidden;overflow-y:scroll;}
 	.scrollerX	{overflow-y:hidden;overflow-x:scroll;}
 	scrollerY	{overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch;}
@@ -57,16 +59,19 @@ $strDynascreenStyle='
 
 	.groundLand	{background-color:rgba(255,255,255,0);}
 	.groundFly	{background-color:rgba(255,255,255,0.7);}
+
 	.bcol1		{background-color:#FFF;}
 	.bcol2		{background-color:#c7c7c7;}
 	.bcol3		{background-color:#000;}
+
 	.tcol1		{color:#000;}
 	.tcol2		{color:#c7c7c7;}
 	.tcol3		{color:#FFF;}
+
 	.tcenter	{text-align:center;}
 	.tleft		{text-align:right;}
 	.tright		{text-align:left;}
-	.cursor		{cursor:pointer;}
+
 	 /*//EDRO base*/
 
 	/*Overlay*/
