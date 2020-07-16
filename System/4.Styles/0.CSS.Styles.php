@@ -33,11 +33,18 @@ $strDynascreenStyle='
 	.border-top	{border-top: 	1px solid #1a1a1a4a;}
 	.border-left	{border-left:	1px solid #1a1a1a4a;}
 	.border-right	{border-right:	1px solid #1a1a1a4a;}
-	.cursor		{cursor:pointer;}
+
 	.loading overlay{display:block;}
 	.loaded overlay {opacity:0!important;visibility:hidden!important;transition: visibility 0s linear 0.9s, opacity 0.9s ease-in-out;}
 	.groundLand	{background-color:rgba(255,255,255,0);}
 	.groundFly	{background-color:rgba(255,255,255,0.7);}
+	.bcol1		{background-color:#FFF}
+	.bcol2		{background-color:#c7c7c7;}
+	.bcol3		{background-color:#000;}
+	.tcol1		{color:#000;}
+	.tcol2		{color:#c7c7c7;}
+	.tcol3		{color:#FFF;}
+	.cursor		{cursor:pointer;}
 	 /*//EDRO base*/
 
 	 /*//EDRO sensor*/
