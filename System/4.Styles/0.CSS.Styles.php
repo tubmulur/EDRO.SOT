@@ -7,19 +7,29 @@ $strDynascreenStyle='
 	/*EDRO father*/
 	body		{font-family:sans-serif;}
 	.feetScreen	{width:100vw;height:93.5vh;}
-	
-	/*EDRO matrix*/
-	.matrixTop	{display:block;position:fixed;top:0px;}
-	.matrixLeft	{display:block;position:fixed;top:40px;left:0;}
-	.matrixRight	{display:block;position:fixed;top:40px;right:0;}
-	.matrixBottom	{display:block;position:fixed;bottom:0px;}
 
-	.matrixTop	{display:block;position:fixed;top:0px;}
+	/*Vertical*/
+	.V100		{top	:0px;}
+	.V99		{top	:20px;}
+	.V98		{top	:40px;}
+	.V97		{top	:60px;}
+	.V96		{top	:80px;}
+	.V95		{top	:100px;}
 
-	.matrixBottom4	{display:block;position:fixed;top:0px;}
-	.matrixBottom3	{display:block;position:fixed;top:0px;}
-	.matrixBottom2	{display:block;position:fixed;top:0px;}
-	.matrixBottom1	{display:block;position:fixed;top:0px;}
+	.V50pc 		{bottom	:50%;}
+
+	.V5 		{bottom	:100px;}
+	.V4 		{bottom	:80px;}
+	.V3 		{bottom	:60px;}
+	.V2 		{bottom	:40px;}
+	.V1 		{bottom	:20px;}
+	.V0 		{bottom	:0px;}
+
+
+	/*Horizontal*/
+	.HOL		{left	:0px;}
+	.HOR		{right	:0px;}
+
 	/*//EDRO matrix*/
 
 
