@@ -13,13 +13,23 @@ $strDynascreenStyle='
 	.matrixLeft	{display:block;position:fixed;top:40px;left:0;}
 	.matrixRight	{display:block;position:fixed;top:40px;right:0;}
 	.matrixBottom	{display:block;position:fixed;bottom:0px;}
+
+	.matrixTop	{display:block;position:fixed;top:0px;}
+
+	.matrixBottom4	{display:block;position:fixed;top:0px;}
+	.matrixBottom3	{display:block;position:fixed;top:0px;}
+	.matrixBottom2	{display:block;position:fixed;top:0px;}
+	.matrixBottom1	{display:block;position:fixed;top:0px;}
 	/*//EDRO matrix*/
 
+
+
 	/*EDRO base*/
-	window 		{}
+	window 		{} /*Not configured yet. Will be in a future.*/
 	.block		{display:block; overflow:hidden;}
 	.rel		{display:block; position:relative;}
 	.abs		{display:block; position:absolute;}
+	.fix		{display:block; position:fixed;}
 	.fixed		{display:block; position:fixed;}
 	.left		{float:left;}
 	.right		{float:right;}
@@ -34,18 +44,25 @@ $strDynascreenStyle='
 	.border-left	{border-left:	1px solid #1a1a1a4a;}
 	.border-right	{border-right:	1px solid #1a1a1a4a;}
 
-	.loading overlay{display:block;}
-	.loaded overlay {opacity:0!important;visibility:hidden!important;transition: visibility 0s linear 0.9s, opacity 0.9s ease-in-out;}
+
 	.groundLand	{background-color:rgba(255,255,255,0);}
 	.groundFly	{background-color:rgba(255,255,255,0.7);}
-	.bcol1		{background-color:#FFF}
+	.bcol1		{background-color:#FFF;}
 	.bcol2		{background-color:#c7c7c7;}
 	.bcol3		{background-color:#000;}
 	.tcol1		{color:#000;}
 	.tcol2		{color:#c7c7c7;}
 	.tcol3		{color:#FFF;}
+	.tcenter	{text-align:center;}
+	.tleft		{text-align:right;}
+	.tright		{text-align:left;}
 	.cursor		{cursor:pointer;}
 	 /*//EDRO base*/
+
+	/*Overlay*/
+	.loading overlay{display:block;}
+	.loaded overlay {opacity:0!important;visibility:hidden!important;transition: visibility 0s linear 0.9s, opacity 0.9s ease-in-out;}
+	/*Overlay*/
 
 	 /*//EDRO sensor*/
 	a.sensor				{text-decoration:none;}
