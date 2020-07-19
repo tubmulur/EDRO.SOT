@@ -10,12 +10,13 @@
 class ПрочитатьСлушателей
 	{
 	public	$м020;
-	public function __construct($_objKIIM, $_м020)
+	public function __construct($_objKIIM, $_сРасполож)
 		{
 		$objKIIM=$_objKIIM;unset($_objKIIM);
 		$objKIIM=KIIM::objStart($objKIIM, array('_strClass'=>__CLASS__,'_strMethod'=>__FUNCTION__, '_strMessage'=>''));
-		$м020		=$_м020;
-			   unset($_м020)
+
+		$сРасполож	=$_сРасполож;
+			   unset($_сРасполож);
 
 		//$this->м020;
 		//$м020['сСтиль']	=
@@ -24,41 +25,47 @@ class ПрочитатьСлушателей
 
 		$чТекущВремяСекунд	=floor(microtime(true));
 
-		$мВсеСлушатели		=scandir($м020['сРасполож']);
+		$мВсеСлушатели		=scandir($сРасполож);
 
 		$чДеньСекунд		=(60*60*24);
 
+		$мСлушателиЗаПятьМинут	=array();
 		$чСлушателейЗаПятьМинут	=0;
 
-		//$this->arrEDRO['arrReality']['arrCurrentListeners']['intOnlineCount']		=0;
-		//$this->arrEDRO['arrReality']['arrCurrentListeners']['intOnline24hCount']	=0;
+		$чСлушателиЗа24Часа	=0;
+
+		$чСлушателиВсегоЗаписей =0;
+
 		foreach($мВсеСлушатели as $сСлушательФайл)
 			{
 			if($сСлушательФайл!='..'&&$сСлушательФайл!='.')
 				{
 				$чНомерокВремя	=preg_replace('/^([0-9]*)\_([0-9]*)(\.020)$/', '$2', $сСлушательФайл);
 				$чНомерокНомер	=preg_replace('/^([0-9]*)\_([0-9]*)(\.020)$/', '$1', $сСлушательФайл);
-				/*
-				if(($чТекущВремяСекунд-$чДеньСекунд)<$чТекущВремяСекунд)
+				
+				if(($чТекущВремяСекунд-$чДеньСекунд)<$чНомерокВремя)
 					{
-					//$this->arrEDRO['arrReality']['arrCurrentListeners']['intOnline24hCount']++;
+					$чСлушателиЗа24Часа++;
 					}
-				*/
-				if(($чТекущВремяСекунд-300)<$чТекущВремяСекунд)
+				if(($чТекущВремяСекунд-300)<$чНомерокВремя)
 					{
-					$мСлушателиПятьМинут[]	=FileRead::arrJSON($objKIIM, $м020['сРасполож'].'/'.$сСлушательФайл);
-					$чСлушателиЗаПятьМинут	=++;
-					
+					$мСлушателиЗаПятьМинут[]	=FileRead::arrJSON($objKIIM, $сРасполож.'/'.$сСлушательФайл);
+					$чСлушателиЗаПятьМинут++;
 					}
+				$чСлушателиВсегоЗаписей++;
 				}
 			}
+		$this->м020['мСлушателиЗаПятьМинут']	=$мСлушателиЗаПятьМинут; //{strStyle=>'Style'}
+		$this->м020['чСлушателиЗаПятьМинут']	=$чСлушателиЗаПятьМинут;
+		$this->м020['чСлушателиВсегоЗаписей']	=$чСлушателиВсегоЗаписей;
+		$this->м020['чСлушателиЗа24Часа']	=$чСлушателиЗа24Часа;
+		
 		KIIM::objFinish($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 		}
-	public static function м($_objKIIM, $_strSetupFile)
+	public static function м($_objKIIM, $_сРасполож)
 		{
-		//$this->arrEDRO['arrReality']['arrCurrentListeners'][$intSessionId]=$arrListener;
-		//$this->arrEDRO['arrReality']['arrCurrentListeners']['intOnlineCount']++;
-		$оПрочитатьСлушателей	=new ПрочитатьСлушателей($_objKIIM, $_strSetupFile);
+		$оПрочитатьСлушателей	=new ПрочитатьСлушателей($_objKIIM, $_сРасполож);
+		return $оПрочитатьСлушателей->м020;
 		}
 	}
 ?>
