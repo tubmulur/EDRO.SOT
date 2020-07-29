@@ -27,13 +27,16 @@ $strDynascreenStyle='
 
 
 	/*Horizontal*/
-	.HOL		{left	:0px;}
-	.H35pc		{left	:35%;}
-	.HOR		{right	:0px;}
+	.HL0		{left	:0px;}
+	.H035pc		{left	:35%;}
+	.HR0		{right	:0px;}
 
 	/*//EDRO matrix*/
 
-
+	/*// Margins /*//
+	.ML		{margin-left:4px;}
+	.MR		{margin-right:4px;}
+	/*// Margins /*//
 
 	/*EDRO base*/
 	window 		{} /*Not configured yet. Will be in a future.*/
@@ -50,23 +53,37 @@ $strDynascreenStyle='
 	scrollerY	{overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch;}
 	scrollerX	{overflow-y:hidden;overflow-x:scroll;-webkit-overflow-scrolling:touch;}
 	.scrollerGlide	{-webkit-overflow-scrolling:touch;}
-	.border		{border:	1px solid #1a1a1a4a;}
-	.border-bottom	{border-bottom: 1px solid #1a1a1a4a;}
-	.border-top	{border-top: 	1px solid #1a1a1a4a;}
-	.border-left	{border-left:	1px solid #1a1a1a4a;}
-	.border-right	{border-right:	1px solid #1a1a1a4a;}
+	.border,	.BO	{border:	1px solid #1a1a1a4a;}
+	.border-bottom,	.BBV	{border-bottom: 1px solid #1a1a1a4a;}
+	.border-top,	.BTA	{border-top: 	1px solid #1a1a1a4a;}
+	.border-left,	.BLL	{border-left:	1px solid #1a1a1a4a;}
+	.border-right,	.BRJ	{border-right:	1px solid #1a1a1a4a;}
 
 
 	.groundLand	{background-color:rgba(255,255,255,0);}
 	.groundFly	{background-color:rgba(255,255,255,0.7);}
 
-	.bcol1		{background-color:#FFF;}
-	.bcol2		{background-color:#c7c7c7;}
-	.bcol3		{background-color:#000;}
+					
+	.PTC1	{color			:#000;}
+	.PBC1	{background-color	:#FFF;}
 
-	.tcol1		{color:#000;}
-	.tcol2		{color:#c7c7c7;}
-	.tcol3		{color:#FFF;}
+	.PTC2	{color			:#000;}
+	.PBC2	{background-color	:yellow;}
+
+	.PTC3	{color			:#000;}
+	.PBC3	{background-color	:#2d90f5;}
+
+	.PTC4	{color			:#000;}
+	.PBC4	{background-color	:#FFF;}
+
+	.tcol1, .TC1	{color			:#000;}
+	.bcol1, .BC1	{background-color	:#FFF;}
+
+	.tcol2,	.TC2	{color			:#FFF;}
+	.bcol2,	.BC2	{background-color	:#575757;}
+
+	.tcol3,	.TC3	{color			:#FFF;}
+	.bcol3,	.BC3	{background-color	:#000;}
 
 	.tcenter	{text-align:center;}
 	.tleft		{text-align:right;}
@@ -87,6 +104,8 @@ $strDynascreenStyle='
 	sensorHorisontalDisplay .selected	{font-weight:normal;color:#000;padding-left:3px;padding-right:3px;}
 	 /*//EDRO sensor*/
 	/*
+
+	/*EDRO Language*/
 	© A.A.CheckMaRev tubmulur@yandex.ru 2020
 
 	MasterMoodSetter: EDRO Language selector. 
@@ -101,7 +120,23 @@ $strDynascreenStyle='
 		   We will get all followers showing only ifEN blocks.
 			set MasterMoodSetter=EN,RU
 		   We will get all followers showing only ifEN and ifRU blocks forever.
-	*/
+	*//*
+	Система расчёта портала на 7 языков. Аист.
+	ifEN,ifRU,ifFR,ifIT,ifGE,ifBY,ifUA            x7
+	EN                                          EN  ifEN,
+                                                    
+        EN                                          EN  ifRU
+                                                    
+        EN                                          EN  ifFR
+                                                    
+        EN                                          EN  ifIT
+                                                    
+        EN                                          EN  ifGE
+                                                    
+        EN                                          EN  ifBY
+                                                    
+        EN                                          EN  ifUA
+				    	*/
 	body.EN ifEN{display:block;}
 	body.EN ifRU{display:none;}
 	body.EN ifFR{display:none;}
@@ -110,56 +145,53 @@ $strDynascreenStyle='
 	body.EN ifBY{display:none;}
 	body.EN ifUA{display:none;}
 
-	body.RU ifRU{display:block;}
 	body.RU ifEN{display:none;}
+	body.RU ifRU{display:block;}
 	body.RU ifFR{display:none;}
 	body.RU ifIT{display:none;}
 	body.RU ifGE{display:none;}
 	body.RU ifBY{display:none;}
 	body.RU ifUA{display:none;}
 
-	body.FR ifFR{display:block;}
-	body.FR ifRU{display:none;}
 	body.FR ifEN{display:none;}
+	body.FR ifRU{display:none;}
+	body.FR ifFR{display:block;}
 	body.FR ifIT{display:none;}
 	body.FR ifGE{display:none;}
 	body.FR ifBY{display:none;}
 	body.FR ifUA{display:none;}
 
-	body.BY ifBY{display:block;}
-	body.BY ifRU{display:none;}
 	body.BY ifEN{display:none;}
+	body.BY ifRU{display:none;}
 	body.BY ifFR{display:none;}
-	body.BY ifIT{display:none;}
+	body.BY ifIT{display:block;}
 	body.BY ifGE{display:none;}
+	body.BY ifBY{display:none;}
 	body.BY ifUA{display:none;}
 
-	body.IT ifIT{display:block;}
-	body.IT ifRU{display:none;}
 	body.IT ifEN{display:none;}
+	body.IT ifRU{display:none;}
 	body.IT ifFR{display:none;}
-	body.IT ifGE{display:none;}
+	body.IT ifIT{display:none;}
+	body.IT ifGE{display:block;}
 	body.IT ifBY{display:none;}
 	body.IT ifUA{display:none;}
 
-	body.GE ifGE{display:block;}
-	body.GE ifRU{display:none;}
 	body.GE ifEN{display:none;}
+	body.GE ifRU{display:none;}
 	body.GE ifFR{display:none;}
 	body.GE ifIT{display:none;}
-	body.GE ifBY{display:none;}
+	body.GE ifGE{display:none;}
+	body.GE ifBY{display:block;}
 	body.GE ifUA{display:none;}
 
-	body.UA ifUA{display:block;}
-	body.UA ifGE{display:none;}
-	body.UA ifRU{display:none;}
 	body.UA ifEN{display:none;}
+	body.UA ifRU{display:none;}
 	body.UA ifFR{display:none;}
 	body.UA ifIT{display:none;}
+	body.UA ifGE{display:none;}
 	body.UA ifBY{display:none;}
-
-
-
+	body.UA ifUA{display:block;}
 
 	/*© A.A.CheckMaRev tubmulur@yandex.ru*/
 	/*EDRO Language*/
@@ -193,6 +225,7 @@ $strDynascreenStyle='
 	.layer_5_Membrane 	{z-index:52;}
 	.layer_5_Overlay	{z-index:51;}
 	.layer_5_Debug		{z-index:52;}
+	.layer_5_Nav	 	{z-index:53;}
 	/*//EDRO layers*/
 
 	/*//EDRO touch*/
@@ -204,27 +237,36 @@ $strDynascreenStyle='
 	/*//EDRO touch*/
 
 	/*/ EDRO Station FollowingDj*/
-	HiFi.NoFollowingDj ifNoFollowingDj		{display:block;}
-	HiFi.FollowingDj ifFollowingDj			{display:none;}
-	HiFi.FollowingDj ifNoFollowingDj		{display:none;}
-	HiFi.NoFollowingDj ifFollowingDj		{display:none;}
+	HiFi.NoFollowingDj 	ifNoFollowingDj		{display:block;}
+	HiFi.FollowingDj 	ifFollowingDj		{display:none;}
+	HiFi.FollowingDj 	ifNoFollowingDj		{display:none;}
+	HiFi.NoFollowingDj 	ifFollowingDj		{display:none;}
 	/*/ EDRO Station FollowingDj*/
 
-	/*/ EDRO Station Search expanded*/
-	.stationSearch.CutDown				{width:20px!important}
-	.stationSearch.CutDown ifCutDown		{display:block!important;}
-	.stationSearch.CutDown form.ifExpanded		{display:none!important;}
-	.stationSearch.CutDown ifExpanded		{display:none!important;}
+	/*/ Master mood setter HficMenu setup definitions [EDRO]. 
+            Setted master mood acronim: "SMM". 
+	    Master Object: "MO".
+	    Example: Setted master mood="CutDown", so SMM->CutDown
+	    Sensitive folowers: "F"*/
+	/*MO----. SMM->-. .----F*/
+	/*	V	V V	*/
+	 HficMenu.CutDown ifCutDown,  HficMenu.default ifCutDown	/*Default  is CutDown*/
+						{width:20px;display:block;} 
 
-	.stationSearch.Expanded ifExpanded		{display:block!important;}
-	.stationSearch.Expanded form.ifExpanded		{display:block!important;}
-	.stationSearch.Expanded ifCutDown		{display:none!important;}
+	 HficMenu.CutDown ifExpanded,  HficMenu.default ifExpanded	/*Default  is CutDown*/
+						{display:none;!important;width:100%;} 
+
+	 HficMenu.Expanded ifExpanded		{display:block;}
+
+	 HficMenu.Expanded ifCutDown		{display:none;}
+
 	/*/ EDRO Station Search expanded*/
 
-	/*/ EDRO Station*/
-	station:hover {background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;}
+	 /*/ EDRO Station */
+	/*station:hover {background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;}
 	station:actve {background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;}
 	station:focus {background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;}
+	\ */            /*/
 	/*/ EDRO Station*/
 
 	/*EDRO player*/
@@ -235,7 +277,7 @@ $strDynascreenStyle='
 	/*EDRO player*/
 
 	/*EDRO station switch*/
-	station ifReady:hover
+	station player:hover
 		{
 		color			:#000!important;
 		background-color	:#ccc;
@@ -275,14 +317,14 @@ $strDynascreenStyle='
 	station.playing
 		{
 		/*border:1px solid #6fff6f!important;*/
-		background-color: #6fb6ff!important;
-		background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;
+		/*background-color: #1e3d5d!important;*/
+		/*background: linear-gradient(0deg,rgba(256,256,256,0.8) ,rgba(190,190,190,0.8))!important;*/
 		}
 	playerControlAlwaysVisible.loadingAudio,
 	station.loadingAudio
 		{
 		/*border:1px solid yellow!important;*/
-		background-color:yellow!important;
+		/*background-color:yellow!important;*/
 		}
 
 	playerControlAlwaysVisible.errorAudio,
@@ -294,9 +336,9 @@ $strDynascreenStyle='
 	/*EDRO station switch colors*/
 
 	/*EDRO station switch header colors*/
-	station.playing 				h2
+	station.playing 				h2	strScrolling
 		{
-		color: #c3dffb!important;
+		color: #659ed4!important;
 		}
 	station.loadingAudio 				h2
 		{
@@ -304,7 +346,7 @@ $strDynascreenStyle='
 		}
 	station.errorAudio 				h2
 		{
-		color: #ecc1be!important;
+		color: red!important;
 		}
 	/*EDRO station switch header colors*/
 
