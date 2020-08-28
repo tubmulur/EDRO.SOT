@@ -1,8 +1,12 @@
 <?php
 //© A.A.CheckMaRev assminog@gmail.com tubmulur@yandex.ru
 //Zero load 
-//Money saver+
-$strEventSetter=strGetEventSetter();
+//Money saver+;
+session_start();
+_DropTheSessionDust();
+$arrEvent		=arrGetEventSetter();
+$strEventSetter		=$arrEvent['strAction'];
+$arrParams		=$arrEvent['arrParams'];
 
 if(bIzEvent('/robots.txt', $strEventSetter))
 	{
@@ -14,6 +18,26 @@ elseif(bIzEvent('/favicon.ico', $strEventSetter))
 	{
 	header('Content-Type: image/png');
 	echo file_get_contents('/home/HiFiIntelligentClub.Ru/favicon.png');
+	exit(0);
+	}
+elseif(bIzEvent('/Mr.Icqr.looking.for.HiFi.jpg', $strEventSetter))
+	{
+	header('Content-Type: image/jpeg');
+	echo file_get_contents('/home/HiFiIntelligentClub.Ru/Hfic_Samin.jpg');
+	exit(0);
+	}
+elseif(bIzEvent('/getStation', $strEventSetter))
+	{
+	header('Content-Type: application/json');
+	$strEnc			=сКодировать($arrParams['strStationId'], $_сДействие='д', $_сКлючь="HiFiIntelligentClub");
+	echo json_encode($strEnc);
+	exit(0);
+	}
+elseif(bIzEvent('/ServerOnline', $strEventSetter))
+	{
+	echo json_encode(array('ok'));
+	//header('Content-Type: image/jpeg');
+	//echo file_get_contents('/home/HiFiIntelligentClub.Ru/Hfic_Samin.jpg');
 	exit(0);
 	}
 elseif(bIzEvent('/listeners', $strEventSetter))
