@@ -21,8 +21,8 @@ Powered by: Благословенный RCe.Framework.
      
 # Usage:
     Standalone;
-    Mutch better, is to plug it into EDRO.Polymer system;
-    EDRO.Polymer - controls and safe input/output operations;
+    Mutch better, is to plug it into EDRO.Polimer [ЕДРО:ПОЛИМЕР] system;
+    EDRO.Polimer - controls and safe input/output operations;
      
 # Project files:
     /EDRO.SetOfTools/HFIC_CreatorsRespect/ElectronicContactsServices.php : Executable. ElectronicContactsServices;
