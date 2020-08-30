@@ -1,4 +1,4 @@
-# EDRO.SetOfTools
+# EDRO.SOT (Set Of Tools)
 
 # [E]vent
 # [D]estination
@@ -19,6 +19,7 @@ https://vk.com/loudrepublic?w=wall-167038841_196
 
 # Coming soon: Waveinspiration
 
+# 30.08.2020 Formatting objOverlay to EDRO ARCITECTURE.
 
 
 Screenshots, programmer's blog.
