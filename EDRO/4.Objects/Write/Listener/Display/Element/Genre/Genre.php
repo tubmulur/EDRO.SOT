@@ -14,8 +14,8 @@ class Genre
 		$мФразы	=мСобратьФразы($_strStyle);
 		foreach($мФразы as $сФраза)
 			{
-			$this->strReality=$сФраза;
-			$this->$strHTML		.=$this->strObject();
+			$this->strReality	=$сФраза;
+			$this->$strHTML		=$this->strObject();
 			}
 		}
 /*-[E]*/private function strEvent()
@@ -51,7 +51,7 @@ class Genre
 	/*-[.]*/}
 /*-[R]*/private function strReality()
 		{
-		$strR=.$this->strReality;
+		$strR=$this->strReality;
 		}
 /*-[O]*/private function strObject()
 		{
@@ -60,12 +60,13 @@ class Genre
 			$this->strEvent().
 			$this->strDesign().
 			'>';
-			Overlay::strHTML().
+			$strO.=
+			Overlay::strHTML();
 			$strO.=
 			$this->strReality();
 		$strO.=
 		'</'.strtolower(__CLASS__).'>';
-		return $strO
+		return $strO;
 /*-[.]*/	}
 		//if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($strStyle))
 		//href="/search'.strLinkGroove($arrParams, 'strStyle').'"
