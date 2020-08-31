@@ -23,7 +23,8 @@ Site[En] Private browsing international: http://ryklzxobxv4s32omimbu7d7t3cdw6dpl
 ./././././././*/
 class Overlay
 	{
-	private $strHTML;
+	public 	$strHTML;
+	private $strReality;
 	public function __construct(	$_objKIIM, 
 					$_arrData=array(
 						'_strTitle'		=>'Test',
@@ -33,7 +34,7 @@ class Overlay
 						)
 					)
 		{
-
+		$this->strHTML		=$this->strObject();
 		}
 /*-[E]*/private function strEvent()
 		{
@@ -67,7 +68,8 @@ class Overlay
 /*-[.]*/	}
 /*-[R]*/private function strReality()
 		{
-		$strR='';
+		$strR=$this->strReality;
+		return $strR;
 		}
 /*-[O]*/private function strObject()
 		{
@@ -80,8 +82,9 @@ class Overlay
 			$this->strReality();
 		$strO.=
 		'</'.strtolower(__CLASS__).'>';
+		return $strO;
 /*-[.]*/	}
-	public static function strHTML($_objKIIM, $_strData)
+	public static function strHTML($_objKIIM=FALSE, $_strData=FALSE)
 		{
 		$objOverlay=new Overlay($_objKIIM, $_strData);
 		return $objOverlay->strHTML;
