@@ -48,7 +48,7 @@ class Overlay
 				),
 			);
 	private $arrObjects	=array(
-			'strTag'		=>'a',
+			'strClass'		=>'a',
 			'strOpen'		=>'>',
 			'strClose'		=>'<',
 		);
@@ -94,42 +94,49 @@ oo2oo,
 			);
 		$this->arrObjects=
 		array(
-			'strTag'		=>'a',
+			'strClass'		=>'a',
 			'strOpen'		=>'>',
 			'strClose'		=>'<',
 			);
 
 		if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($_strStyle))
 			{
-			$this->strHTML		=$this->strObject();
+			$this->objReality['arrLang']['ifEN']	=$_strStyle;
+			$this->objReality['arrLang']['ifRU']	=$_strStyle;
+			$this->strHTML				=$this->strObject();
 			}
 		}
 /*-[E]*/private function strEvent()
 		{
+		$strE='href="'.$this->arrEvent['strLink'].'" ';
+		$strE.='onClick="'.$this->arrEvent['strOnClick'].'" ';
 		return $strE;
 /*-[.]*/	}
 /*-[D]*/private function strDesign()
 		{
-		// Updating soon 
+		$strD='class="'.$this->arrDesign['strClass'].'" ';
+		$strD.='style="'.$this->arrDesign['strStyle'].'" ';
 		$strD.="\n".$strClose;
 		return $strD;
 /*-[.]*/	}
 /*-[R]*/private function strReality()
 		{
-		// Updating soon 
-		$strR='';
+		//print_r($_SESSION);
+		$this->objReality['arrRole'];
+		$this->objReality['arrLang'];
+		$strR='<ifRU>'.$this->objReality['arrLang']['ifRU'].'</ifRU>';
+		$strR='<ifEN>'.$this->objReality['arrLang']['ifEN'].'</ifEN>';
 		return $strR;
 		}
 /*-[O]*/private function strObject()
 		{
-//		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n"
-		/*$strE=$this->strEvent();
+		$strE=$this->strEvent();
 		$strD=$this->strDesign();
-		$strR=$this->$this->strReality();
-		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n".$strClose;
-			$strO.=$this->strReality();
-			$strO.=$strOpen.'/'.$this->strDesignTag.$strClose;
-		return $strO;*/
+		$strR=$this->strReality();
+		$strO=$this->arrObjects['strOpen'].$this->arrObjects['strClass']."\n";
+		$strO.=$strE.$strD.$strR;
+		$strO.=$this->arrObjects['strOpen'].'/'.$this->arrObjects['strClass'].$this->arrObjects['strClose']."\n";
+		return $strO;
 /*-[.]*/	}
 	public static function strHTML($_objKIIM, $_strStyle, $arrParams, $_intLayer)
 		{
