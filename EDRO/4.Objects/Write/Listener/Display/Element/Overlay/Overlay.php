@@ -25,27 +25,23 @@ class Overlay
 	{
 	public 	$strHTML;
 	private $arrEvent	=array(
-			'strLink'		=>'"/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"',
-			'strOnClick'		=>'//objSearch.objValueInputStyle.value='';
-						objEvent.arrParams.strStyle='';
-						objEvent._UpdateURLDyn();
-						return false;
-						'
+			'strLink'		=>'',
+			'strOnClick'		=>'',
 		);
 	private $arrDesign	=array(
 			'strClass'		=>'',
 			'strStyle'		=>'',
-			'intLayer'		=1
+			'intLayer'		=>1,
 		);
 	private $objReality	=array(
 			'strRole'		=>'',
 			'strLang'		=>'',
-			'strText'		=>
+			'strText'		=>'',
 		);
 	private $strObjects	=array(
-			'strTag'		=>'a'
-			'strOpen'		=>'>'
-			'strClose'		=>'<'
+			'strTag'		=>'a',
+			'strOpen'		=>'>',
+			'strClose'		=>'<',
 		);
 	
 	public function __construct($_objKIIM, $_strStyle, $arrParams,  $_intLayer)
@@ -53,7 +49,8 @@ class Overlay
 		$this->strDesignTag	='a';
 		$this->arrEvent	=array(
 			'strLink'		=>'"/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"',
-			'strOnClick'		=><<<oo2oo
+			'strOnClick'		=>
+<<<oo2oo
 					//objSearch.objValueInputStyle.value='';
 					objEvent.arrParams.strStyle='';
 					objEvent._UpdateURLDyn();
@@ -62,7 +59,8 @@ oo2oo,
 			);
 		$this->arrDesign	=array(
 			'strClass'		=>'block abs layer_'.($_intLayer+1),
-			'strStyle'		=><<<oo2oo
+			'strStyle'		=>
+<<<oo2oo
 					top		: 0;
 					left		: 0;
 					width		: 100%;
