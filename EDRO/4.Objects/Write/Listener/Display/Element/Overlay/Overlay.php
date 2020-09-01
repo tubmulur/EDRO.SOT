@@ -25,35 +25,39 @@ class Overlay
 	{
 	public 	$strHTML;
 	private $strReality;
-	public function __construct(	$_objKIIM, 
-					$_arrData=array(
-						'_strTitle'		=>'Test',
-						'_strDescription'	=>'Test description', 
-						'_strCopyrightInfo'	=>'....Comming soon',
-						'_strLogo'		=>'/image.png'
-						)
-					)
+	private $strDesignTag;
+	private $strLayer;
+	public function __construct($_objKIIM, $_strStyle, $arrParams,  $_intLayer)
 		{
-		$this->strHTML		=$this->strObject();
+		$this->strDesignTag	='a';
+		$this->arrParams	=$arrParams;
+		$this->strReality	=$_strStyle;
+		$this->intLayer		=$_intLayer++;
+		if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($_strStyle))
+			{
+			$this->strHTML		=$this->strObject();
+			}
 		}
 /*-[E]*/private function strEvent()
 		{
-		$strE='
-			onStartLoading		=""
-			onFinishLoading		=""
-			onclick="
-				//objSearch.objValueInputStyle.value=\'\';
-				objEvent.arrParams.strStyle=\'\';
-				objEvent._UpdateURLDyn();
-				return false;
-				"
-			';
+		//$strE	='href="/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"';
+		//$strE	.="\n";
+		//	onStartLoading		=""
+		//	onFinishLoading		=""
+		//$strE	.=<<<oo2oo
+		//onclick="
+		//	//objSearch.objValueInputStyle.value='';
+		//	objEvent.arrParams.strStyle='';
+		//	objEvent._UpdateURLDyn();
+		//	return false;
+		//	"
+oo2oo;
 		return $strE;
 /*-[.]*/	}
 /*-[D]*/private function strDesign()
 		{
 		$strD='
-		class="block abs layer_5_1_Overlay"
+		class="block abs layer_'.$this->intLayer.'"
 		style="
 			top		: 0;
 			left		: 0;
@@ -61,7 +65,7 @@ class Overlay
 			height		: 100%;
 			text-align	: center;
 			color		: #fff;
-			background-color: rgba(240, 240, 240, 0.6);
+			background-color: rgba(240, 240, 240, 1);
 			"
 		';
 		return $strD;
@@ -73,20 +77,20 @@ class Overlay
 		}
 /*-[O]*/private function strObject()
 		{
-		$strO.=
-		'<'.strtolower(__CLASS__).
-			$this->strEvent().
-			$this->strDesign().
-			'>';
-			$strO.=
-			$this->strReality();
-		$strO.=
-		'</'.strtolower(__CLASS__).'>';
+		$strOpen="<";
+		$strClose=">";
+		//$strOpen="<br/>";
+		//$strClose="<br/>";
+
+		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n".$strClose;
+			$strO.=$this->strReality();
+			$strO.=	"\n".$this->strEvent()."\n".$this->strDesign();
+		$strO.=$strOpen.'/'.$this->strDesignTag.$strClose;
 		return $strO;
 /*-[.]*/	}
-	public static function strHTML($_objKIIM=FALSE, $_strData=FALSE)
+	public static function strHTML($_objKIIM, $_strStyle, $arrParams, $_intLayer)
 		{
-		$objOverlay=new Overlay($_objKIIM, $_strData);
+		$objOverlay=new Overlay($_objKIIM, $_strStyle, $arrParams, $_intLayer);
 		return $objOverlay->strHTML;
 		}
 	}
