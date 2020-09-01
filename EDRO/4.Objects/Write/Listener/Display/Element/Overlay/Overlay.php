@@ -24,30 +24,39 @@ Site[En] Private browsing international: http://ryklzxobxv4s32omimbu7d7t3cdw6dpl
 class Overlay
 	{
 	public 	$strHTML;
-	private $arrEvent	=array(
+	private $arrEvent	=
+		array(
 			'strLink'		=>'',
 			'strOnClick'		=>'',
 		);
-	private $arrDesign	=array(
+	private $arrDesign	=
+		array(
 			'strClass'		=>'',
 			'strStyle'		=>'',
 			'intLayer'		=>1,
-		);
-	private $objReality	=array(
-			'strRole'		=>'',
-			'strLang'		=>'',
-			'strText'		=>'',
-		);
-	private $strObjects	=array(
+			);
+	private $objReality	=
+		array(
+			'arrRole'=>
+			array(
+				'Listener', 'Operator'
+				),
+			'arrLang'=>
+			array(
+				'ifEN'	=>'',
+				'ifRU'	=>'',
+				),
+			);
+	private $arrObjects	=array(
 			'strTag'		=>'a',
 			'strOpen'		=>'>',
 			'strClose'		=>'<',
 		);
-	
+
 	public function __construct($_objKIIM, $_strStyle, $arrParams,  $_intLayer)
 		{
-		$this->strDesignTag	='a';
-		$this->arrEvent	=array(
+		$this->arrEvent	=
+		array(
 			'strLink'		=>'"/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"',
 			'strOnClick'		=>
 <<<oo2oo
@@ -57,7 +66,8 @@ class Overlay
 					return false;
 oo2oo,
 			);
-		$this->arrDesign	=array(
+		$this->arrDesign=
+		array(
 			'strClass'		=>'block abs layer_'.($_intLayer+1),
 			'strStyle'		=>
 <<<oo2oo
@@ -70,15 +80,24 @@ oo2oo,
 					background-color: #000;
 oo2oo,
 			);
-		$this->objReality	=array(
-			'arrRole'		=>array(
+		$this->objReality=
+		array(
+			'arrRole'=>
+			array(
 				'Listener', 'Operator'
 				),
-			'arrLang'		=>array(
+			'arrLang'=>
+			array(
 				'ifEN'	=>'',
 				'ifRU'	=>'',
 				),
-		);
+			);
+		$this->arrObjects=
+		array(
+			'strTag'		=>'a',
+			'strOpen'		=>'>',
+			'strClose'		=>'<',
+			);
 
 		if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($_strStyle))
 			{
@@ -87,18 +106,6 @@ oo2oo,
 		}
 /*-[E]*/private function strEvent()
 		{
-		//$strE	='href="/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"';
-		//$strE	.="\n";
-		//	onStartLoading		=""
-		//	onFinishLoading		=""
-		//$strE	.=<<<oo2oo
-		//onclick="
-		//	//objSearch.objValueInputStyle.value='';
-		//	objEvent.arrParams.strStyle='';
-		//	objEvent._UpdateURLDyn();
-		//	return false;
-		//	"
-oo2oo;
 		return $strE;
 /*-[.]*/	}
 /*-[D]*/private function strDesign()
@@ -115,18 +122,14 @@ oo2oo;
 		}
 /*-[O]*/private function strObject()
 		{
-//		$strOpen="<";
-//		$strClose=">";
-		//$strOpen="<br/>";
-		//$strClose="<br/>";
 //		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n"
-		$strE=$this->strEvent();
+		/*$strE=$this->strEvent();
 		$strD=$this->strDesign();
 		$strR=$this->$this->strReality();
 		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n".$strClose;
 			$strO.=$this->strReality();
 			$strO.=$strOpen.'/'.$this->strDesignTag.$strClose;
-		return $strO;
+		return $strO;*/
 /*-[.]*/	}
 	public static function strHTML($_objKIIM, $_strStyle, $arrParams, $_intLayer)
 		{
