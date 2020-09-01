@@ -59,28 +59,13 @@ class EDRO
 		$this->arrEvent	=
 		array(
 			'strLink'		=>'"/search'.strLinkGroove($this->arrEvent['arrParams'], 'strStyle', '').'"',
-			'strOnClick'		=>
-<<<oo2oo
-					//objSearch.objValueInputStyle.value='';
-					objEvent.arrParams.strStyle='';
-					objEvent._UpdateURLDyn();
-					return false;
-oo2oo,
+			'strOnClick'		=>'',
 			'arrParams'		=>$arrParams,
 			);
 		$this->arrDesign=
 		array(
 			'strClass'		=>'block abs layer_'.($_intLayer+1),
-			'strStyle'		=>
-<<<oo2oo
-					top		: 0;
-					left		: 0;
-					width		: 100%;
-					height		: 100%;
-					text-align	: center;
-					color		: #fff;
-					background-color: #000;
-oo2oo,
+			'strStyle'		=>'',
 			);
 		$this->objReality=
 		array(
