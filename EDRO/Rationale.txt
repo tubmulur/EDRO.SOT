@@ -1,6 +1,0 @@
-© Andrey.A.Chekmarev tubmulur@yandex.ru
-
-/EDRO.SetOfTools/EDRO/1.Event/        All that describes Event
-/EDRO.SetOfTools/EDRO/2.Desing/       Output processors
-/EDRO.SetOfTools/EDRO/3.Reality/      All that describes current reality
-/EDRO.SetOfTools/EDRO/4.Object/       Objects we are using
