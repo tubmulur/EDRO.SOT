@@ -107,6 +107,8 @@ oo2oo,
 			$this->objReality['arrLang']['ifRU']	=$_strStyle;
 			$this->strHTML				=$this->strObject();
 			}
+
+		KIIM::objFinish($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 		}
 /*-[E]*/private function strEvent()
 		{
@@ -144,10 +146,6 @@ oo2oo,
 		$objOverlay=new Overlay($_objKIIM, $_strStyle, $arrParams, $_intLayer);
 		return $objOverlay->strHTML;
 		}
-		
-		KIIM::objFinish($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
-		}
-
 	public static function strObjectDeclare()
 		{
 		$str	= <<<oo2oo
