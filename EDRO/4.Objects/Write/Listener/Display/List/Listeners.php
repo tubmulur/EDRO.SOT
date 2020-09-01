@@ -5,18 +5,18 @@
   //  <  **> 
  //     Jl   
 //////
-class Слушатели
+class Listeners
 	{
-	public $сСлушательБраузер;
-	public function __construct($_мСлушатели, $_мПоиск)
+	public $strHTML;
+	public function __construct($_objKIIM, $_мСлушатели, $_мПоиск)
 		{
 		$objKIIM=$_objKIIM;
 		   unset($_objKIIM);
 		$objKIIM=KIIM::objStart($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 
-		$мСлушатели	=$_мСлушатели;
+		$мСлушатели5Мин	=$_мСлушатели['мСлушателиЗаПятьМинут'];
 		           unset($_мСлушатели);
-		$this->сСлушательБраузер='
+		$this->strHTML='
 			<activeListeners 
 				class="fixed block scrollerY layer_5" 
 				style="
@@ -27,9 +27,9 @@ class Слушатели
 					background-color:#fff;
 					"
 				>';
-		foreach($мСлушатели as $чСлушательИД=>$мСлушательПараметры)
+		foreach($мСлушатели5Мин as $чСлушательИД=>$мСлушательПараметры)
 			{
-			$this->сСлушательБраузер.='
+			$this->strHTML.='
 				<activeListener 
 					class="block left border-right border-left" 
 					style="
@@ -37,21 +37,21 @@ class Слушатели
 						"
 					>
 					';
-					$this->сСлушательБраузер.=Genre::strHTML($objKIIM, $мСлушательПараметры['strStyle'], $_мПоиск);
-			$this->сСлушательБраузер.='
+					$this->strHTML.=Genre::strHTML($objKIIM, $мСлушательПараметры['strStyle'], $_мПоиск);
+			$this->strHTML.='
 				</activeListener>
 				';
 			}
-		$this->сСлушательБраузер.='
+		$this->strHTML.='
 			</activeListeners>
 			';
-
+		$this->strHTML;
 		KIIM::objFinish($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 		}
-	public static function сСлушательБраузер($_objKIIM, $_мСлушатели, $_мПоиск)
+	public static function strHTML($_objKIIM, $_мСлушатели, $_мПоиск)
 		{
-		$о	=new Слушатели($_objKIIM, $_мСлушатели, $_мПоиск);
-		return $о->__FUNCTION__;
+		$о	=new Listeners($_objKIIM, $_мСлушатели, $_мПоиск);
+		return $о->strHTML;
 		}
 	}
 ?>
