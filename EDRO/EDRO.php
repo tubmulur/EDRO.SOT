@@ -21,22 +21,130 @@ Site[En] Private browsing international: http://ryklzxobxv4s32omimbu7d7t3cdw6dpl
 //      <  **>               /// /  
  //////   jl                ///// /    
 ./././././././*/
-class EDRO extends Event
+class EDRO
 	{
-	protected $strBasePath;
-	public function __construct($_objKIIM)
+	public 	$strHTML;
+	private $arrEvent	=
+		array(
+			'strLink'		=>'',
+			'strOnClick'		=>'',
+		);
+	private $arrDesign	=
+		array(
+			'strClass'		=>'',
+			'strStyle'		=>'',
+			'intLayer'		=>1,
+			);
+	private $objReality	=
+		array(
+			'arrRole'=>
+			array(
+				'Listener', 'Operator'
+				),
+			'arrLang'=>
+			array(
+				'ifEN'	=>'',
+				'ifRU'	=>'',
+				),
+			);
+	private $arrObjects	=array(
+			'strClass'		=>'a',
+			'strOpen'		=>'>',
+			'strClose'		=>'<',
+		);
+	public function __construct($_objKIIM, $_strStyle, $arrParams,  $_intLayer)
 		{$objKIIM=$_objKIIM;unset($_objKIIM);$objKIIM=KIIM::objStart($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 
-		$this->strBasePath		=Reality::strBasePath();
 
-		parent::__construct($objKIIM);
-		/*
-		echo '<pre>';
-			print_r($this);
-		echo '</pre>';
-		exit(0);
-		*/
-		FileRead::_GetDesignHTML($objKIIM, $this->arrDesign['strTemplate'], $this);
+		$this->arrEvent	=
+		array(
+			'strLink'		=>'"/search'.strLinkGroove($this->arrEvent['arrParams'], 'strStyle', '').'"',
+			'strOnClick'		=>
+<<<oo2oo
+					//objSearch.objValueInputStyle.value='';
+					objEvent.arrParams.strStyle='';
+					objEvent._UpdateURLDyn();
+					return false;
+oo2oo,
+			'arrParams'		=>$arrParams,
+			);
+		$this->arrDesign=
+		array(
+			'strClass'		=>'block abs layer_'.($_intLayer+1),
+			'strStyle'		=>
+<<<oo2oo
+					top		: 0;
+					left		: 0;
+					width		: 100%;
+					height		: 100%;
+					text-align	: center;
+					color		: #fff;
+					background-color: #000;
+oo2oo,
+			);
+		$this->objReality=
+		array(
+			'arrRole'=>
+			array(
+				'Listener', 'Operator'
+				),
+			'arrLang'=>
+			array(
+				'ifEN'	=>'',
+				'ifRU'	=>'',
+				),
+			);
+		$this->arrObjects=
+		array(
+			'strClass'		=>'a',
+			'strOpen'		=>'<',
+			'strClose'		=>'>',
+			);
+
+		if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($_strStyle))
+			{
+			$this->objReality['arrLang']['ifEN']	=$_strStyle;
+			$this->objReality['arrLang']['ifRU']	=$_strStyle;
+			$this->strHTML				=$this->strObject();
+			}
+		}
+/*-[E]*/private function strEvent()
+		{
+		$strE='href="'.$this->arrEvent['strLink'].'" ';
+		$strE.='onClick="'.$this->arrEvent['strOnClick'].'" ';
+		return $strE;
+/*-[.]*/	}
+/*-[D]*/private function strDesign()
+		{
+		$strD='class="'.$this->arrDesign['strClass'].'" ';
+		$strD.='style="'.$this->arrDesign['strStyle'].'" ';
+		return $strD;
+/*-[.]*/	}
+/*-[R]*/private function strReality()
+		{
+		//print_r($_SESSION);
+		//$this->objReality['arrRole'];
+		//$this->objReality['arrLang'];
+		$strR='<ifRU>'.$this->objReality['arrLang']['ifRU'].'</ifRU>';
+		$strR.='<ifEN>'.$this->objReality['arrLang']['ifEN'].'</ifEN>';
+		return $strR;
+		}
+/*-[O]*/private function strObject()
+		{
+		$strE=$this->strEvent();
+		$strD=$this->strDesign();
+		$strR=$this->strReality();
+		$strO=$this->arrObjects['strOpen'].$this->arrObjects['strClass'].$this->arrObjects['strClose']."\n";
+		$strO.=$strE.$strD.$strR;
+		$strO.=$this->arrObjects['strOpen'].'/'.$this->arrObjects['strClass'].$this->arrObjects['strClose']."\n";
+		return $strO;
+/*-[.]*/	}
+	public static function strHTML($_objKIIM, $_strStyle, $arrParams, $_intLayer)
+		{
+		$objOverlay=new Overlay($_objKIIM, $_strStyle, $arrParams, $_intLayer);
+		return $objOverlay->strHTML;
+		}
+		
 		KIIM::objFinish($objKIIM, array('_strClass'=>__CLASS__, '_strMethod'=>__FUNCTION__, '_strMessage'=>''));
 		}
 
