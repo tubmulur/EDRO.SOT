@@ -24,15 +24,64 @@ Site[En] Private browsing international: http://ryklzxobxv4s32omimbu7d7t3cdw6dpl
 class Overlay
 	{
 	public 	$strHTML;
-	private $strReality;
-	private $strDesignTag;
-	private $strLayer;
+	private $arrEvent	=array(
+			'strLink'		=>'"/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"',
+			'strOnClick'		=>'//objSearch.objValueInputStyle.value='';
+						objEvent.arrParams.strStyle='';
+						objEvent._UpdateURLDyn();
+						return false;
+						'
+		);
+	private $arrDesign	=array(
+			'strClass'		=>'',
+			'strStyle'		=>'',
+			'intLayer'		=1
+		);
+	private $objReality	=array(
+			'strRole'		=>'',
+			'strLang'		=>'',
+			'strText'		=>
+		);
+	private $strObjects	=array(
+			'strTag'		=>'a'
+			'strOpen'		=>'>'
+			'strClose'		=>'<'
+		);
+	
 	public function __construct($_objKIIM, $_strStyle, $arrParams,  $_intLayer)
 		{
 		$this->strDesignTag	='a';
-		$this->arrParams	=$arrParams;
-		$this->strReality	=$_strStyle;
-		$this->intLayer		=$_intLayer++;
+		$this->arrEvent	=array(
+			'strLink'		=>'"/search'.strLinkGroove($this->arrParams, 'strStyle', '').'"',
+			'strOnClick'		=><<<oo2oo
+					//objSearch.objValueInputStyle.value='';
+					objEvent.arrParams.strStyle='';
+					objEvent._UpdateURLDyn();
+					return false;
+oo2oo,
+			);
+		$this->arrDesign	=array(
+			'strClass'		=>'block abs layer_'.($_intLayer+1),
+			'strStyle'		=><<<oo2oo
+					top		: 0;
+					left		: 0;
+					width		: 100%;
+					height		: 100%;
+					text-align	: center;
+					color		: #fff;
+					background-color: #000;
+oo2oo,
+			);
+		$this->objReality	=array(
+			'arrRole'		=>array(
+				'Listener', 'Operator'
+				),
+			'arrLang'		=>array(
+				'ifEN'	=>'',
+				'ifRU'	=>'',
+				),
+		);
+
 		if(сДляСравнения($arrParams['strStyle'])==сДляСравнения($_strStyle))
 			{
 			$this->strHTML		=$this->strObject();
@@ -56,36 +105,29 @@ oo2oo;
 /*-[.]*/	}
 /*-[D]*/private function strDesign()
 		{
-		$strD='
-		class="block abs layer_'.$this->intLayer.'"
-		style="
-			top		: 0;
-			left		: 0;
-			width		: 100%;
-			height		: 100%;
-			text-align	: center;
-			color		: #fff;
-			background-color: rgba(240, 240, 240, 1);
-			"
-		';
+		// Updating soon 
+		$strD.="\n".$strClose;
 		return $strD;
 /*-[.]*/	}
 /*-[R]*/private function strReality()
 		{
-		$strR=$this->strReality;
+		// Updating soon 
+		$strR='';
 		return $strR;
 		}
 /*-[O]*/private function strObject()
 		{
-		$strOpen="<";
-		$strClose=">";
+//		$strOpen="<";
+//		$strClose=">";
 		//$strOpen="<br/>";
 		//$strClose="<br/>";
-
+//		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n"
+		$strE=$this->strEvent();
+		$strD=$this->strDesign();
+		$strR=$this->$this->strReality();
 		$strO=$strOpen.$this->strDesignTag."\n".$this->strEvent()."\n".$strClose;
 			$strO.=$this->strReality();
-			$strO.=	"\n".$this->strEvent()."\n".$this->strDesign();
-		$strO.=$strOpen.'/'.$this->strDesignTag.$strClose;
+			$strO.=$strOpen.'/'.$this->strDesignTag.$strClose;
 		return $strO;
 /*-[.]*/	}
 	public static function strHTML($_objKIIM, $_strStyle, $arrParams, $_intLayer)
