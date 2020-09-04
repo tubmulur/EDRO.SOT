@@ -20,7 +20,7 @@ elseif(bIzEvent('/favicon.ico', $strEventSetter))
 	echo file_get_contents('/home/HiFiIntelligentClub.Ru/favicon.png');
 	exit(0);
 	}
-elseif(bIzEvent('/Mr.Icqr.looking.for.HiFi.jpg', $strEventSetter))
+elseif(bIzEvent('/Hfic_Samin.jpg', $strEventSetter))
 	{
 	header('Content-Type: image/jpeg');
 	echo file_get_contents('/home/HiFiIntelligentClub.Ru/Hfic_Samin.jpg');
@@ -28,8 +28,9 @@ elseif(bIzEvent('/Mr.Icqr.looking.for.HiFi.jpg', $strEventSetter))
 	}
 elseif(bIzEvent('/getStation', $strEventSetter))
 	{
+	//print_r($arrParams);
 	header('Content-Type: application/json');
-	$strEnc			=сКодировать($arrParams['strStationId'], $_сДействие='д', $_сКлючь="HiFiIntelligentClub");
+	$strEnc			=сКодировать($arrParams['strPlayingStationId'], $_сДействие='д');
 	echo json_encode($strEnc);
 	exit(0);
 	}

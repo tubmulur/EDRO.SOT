@@ -13,7 +13,7 @@ function сКлючь()
 function arrAllEventIncomeActions()
 	{
 	return	array(
-		'/','/search','/Mr.Icqr.looking.for.HiFi.jpg','/favicon.ico','/getStation','/ServerOnline','/listeners','/robots.txt'
+		'/','/search','/Hfic_Samin.jpg','/favicon.ico','/getStation','/ServerOnline','/listeners','/robots.txt'
 		);
 	}
 function arrAllEventIncomeParametrsDefault()
@@ -73,79 +73,97 @@ function arrAllEventIncomeParametrsDefault()
 	return $arrAllIncome;
 	}
 //[..]Event Global
-function мФразы() /* Could be inputed by anyone and after that used in pfrase feat Armin van Buuren */
+function мФразы($_сФраза) /* Could be inputed by anyone and after that used in pfrase feat Armin van Buuren */
 	{
-	foreach();
+	/*
+	$ч1Длинна	=strlen($_сФраза);
+
+	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
 		{
-		$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$2$3$4','Д');
-		$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$3$4','р');
-		$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$2$4','а');
-		$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$2$3','м');
+		$сСлово		.=$_сВход[$ч0Шаг];
+		echo $сСлово;
 		}
-	/*$м[1]['Drum']['International']['arrPossible']	=array('D','Drum');
-	$м[1]['Drum']['International']['strMisstake']	=array('D?r?{u|a}?m?');
-	$м[1]['Drum']['EN']['arrPossible']		=array('D','Drum');
-	$м[1]['Drum']['EN']['strMisstake']		=array('D?r?{u|a}?m?');
-	$м[1]['Drum']['RU']['arrPossible']		=array('Д','Драм');
-	$м[1]['Drum']['RU']['strMisstake']		=array('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/','$1');
+	//$arrFreeSearchInputCharExpression=
+	
+	//foreach();
+	//	{
+	//	$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$2$3$4','Д');
+	//	$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$3$4','р');
+	//	$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$2$4','а');
+	//	$str.=preg_replace('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/', '$1$2$3','м');
+	//	}
+	//$м[1]['Drum']['International']['arrPossible']	=array('D','Drum');
+	//$м[1]['Drum']['International']['strMisstake']	=array('D?r?{u|a}?m?');
+	//$м[1]['Drum']['EN']['arrPossible']		=array('D','Drum');
+	//$м[1]['Drum']['EN']['strMisstake']		=array('D?r?{u|a}?m?');
+	//$м[1]['Drum']['RU']['arrPossible']		=array('Д','Драм');
+	//$м[1]['Drum']['RU']['strMisstake']		=array('/^(Д{1,2})(р{1,2})(а{1,2}|у{1,2})(м{1,2})$/','$1');
 
-	$м[1]['and']['EN']['arrPossible']		=array('&', "'&'");
-	$м[1]['and']['EN']['strMisstake']		=
-	$м[1]['and']['RU']['arrPossible']		=array('&', "'&'");
-	$м[1]['and']['RU']['strMisstake']		=
+	//$м[1]['and']['EN']['arrPossible']		=array('&', "'&'");
+	//$м[1]['and']['EN']['strMisstake']		=
+	//$м[1]['and']['RU']['arrPossible']		=array('&', "'&'");
+	//$м[1]['and']['RU']['strMisstake']		=
 
-	$м[1]['Bass']['EN']['strPossible']		=
-	$м[1]['Bass']['EN']['strMisstake']		=
-	$м[1]['Bass']['RU']['strPossible']		=
-	$м[1]['Bass']['RU']['strMisstake']		=*/
+	//$м[1]['Bass']['EN']['strPossible']		=
+	//$м[1]['Bass']['EN']['strMisstake']		=
+	//$м[1]['Bass']['RU']['strPossible']		=
+	//$м[1]['Bass']['RU']['strMisstake']		=
 
 
-		=>'arrPossible'	=>array('Drum & Bass','D&B'),
-			=>'strMisstake'	=>array('Drum & Base')
-		);
-	$м[]=array('Top','100');
+	//	=>'arrPossible'	=>array('Drum & Bass','D&B'),
+	//		=>'strMisstake'	=>array('Drum & Base')
+	//	);
+	//$м[]=array('Top','100');
 	return $м;
+	*/
 	}
-
-function сДляСравнения($с_Вход)
+function сКодировка($с_Вход)
 	{
+	$чВыход	=FALSE;
 	$ч1Длинна	=strlen($с_Вход);
 	$сКодировка	=empty(substr($с_Вход, $ч1Длинна))?'Однобайтная':'Не однобайтная';
 	if($сКодировка=='Не однобайтная')
 		{//Мы любим счастливых и уставших от прогулок грибников,
-		function _Report($с_Вход.''.'Не однобайтная'); 
-		}//радостно слушающих музыку, по всему миру.
+		_Report($с_Вход.''.'Не однобайтная');
+		exit;
+		}
+	return $сКодировка;
+	}
+function сДляСравнения($с_Вход)
+	{
+//радостно слушающих музыку, по всему миру.
 		//Что бы не случилось. Хорошая Музыка выручит душу из любых передряг, 
 		//может даже вернёт в этот мир......
 		//Mr Hfic Samin after "Groove Jet" trip:
-		/*"Jog dial was funny. Small Krz* LCD display was very, very big!!!
-			noughty blue, right behinde my face, and the JOG DIAL itself, imagination 
-			flash..where some where in my hand........ooogh! ..... but......
-			all music were so silly cool, that i was laoghting all day long. Like!:))
-			Where were no silences or pauses. Every touch works perfect.
-			Only positive memories. Good emotions for me and my friends."
+		//Jog dial was funny. Small Krz* LCD display was very, very big!!!
+		//	noughty blue, right behinde my face, and the JOG DIAL itself, imagination 
+		//	flash..where some where in my hand........ooogh! ..... but......
+		//	all music were so silly cool, that i was laoghting all day long. Like!:))
+		//	Where were no silences or pauses. Every touch works perfect.
+		//	Only positive memories. Good emotions for me and my friends.
 
 		//Mr Hfic Samin after "No f*cking developers maked their job right, b*t!" 
 		//trip:
-			"Music stops. I can't start it again. Than, can't stop.....
-			Carpets were like in the stomach of a monster......
-			Bad day! Bad emotions! But.... Carpets and mobile is in a trashcan....
-			Negative balance."
+		//	Music stops. I can't start it again. Than, can't stop.....
+		//	Carpets were like in the stomach of a monster......
+		//	Bad day! Bad emotions! But.... Carpets and mobile is in a trashcan....
+		//	Negative balance.
 		//My figure prefere the first one.  Hfic.Samin. 2020
 	return strtolower($с_Вход);
 	}
-function мСобратьФразы($_сВход)
+function мСобратьФразы($_сВход, $_сБолМал='Нетрог') //'Бол'/'Мал'/'Нетрог'/'МалДиректор'
 	{
 	$мСлово		=array();
 	$мФраза		=array();
+	$сСлово		='';
 	if(empty($_сВход))
 		{
 		$мФраза[]='What are our styles?';
-		return $мФраза[];
+		return $мФраза;
 		}
+
 	$ч1Длинна	=strlen($_сВход);
-	//$ч0НачалоСлова	=0;
-	$сСлово		='';
+
 	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
 		{
 		$сСлово.=$_сВход[$ч0Шаг];
@@ -155,18 +173,37 @@ function мСобратьФразы($_сВход)
 			$сСлово		=substr($сСлово,0,-1);
 			if(in_array($сСлово, $мСлово))
 				{
+				//echo'Дубль!'."\n";
 				//Дубль
 				}
 			else
 				{
-				$мСлово[]	=$сСлово;
+				switch($_сБолМал)
+					{
+					case 'Бол':
+						$мСлово[]	=mb_strtoupper($сСлово);
+					break;
+					case 'Мал':
+						$мСлово[]	=mb_strtolower($сСлово);
+					break;
+					case 'Нетрог':
+						$мСлово[]	=$сСлово;
+					break;
+					case 'МалДиректор':
+						$мСлово[]	=сПреобразовать(mb_strtolower($сСлово), "вКоманду");
+					break;
+					}
 				}
 			$сСлово		='';
 			}
 		}
-	echo'<pre>';
+	/*echo'<pre>';
 	print_r($мСлово);
-	echo'</pre>';
+	echo'</pre>';*/
+	if(empty($мСлово))
+		{
+		$мСлово[]='';
+		}
 	$мФраза=$мСлово;
 	//28 august 2020 Hfic Samin simplified solution. Will be beter next time. 
 	//I doo my fast, as fast as possible. Extra fast. Extra thrust. 
@@ -253,7 +290,7 @@ function strNDigitVisible($_intN, $_str, $_strShowFrom='fromEnd')  //fromEnd/Fro
 function strNDigitMainTrace($_float)
 	{
 	$float=$_float;
-         unset($_float);
+	 unset($_float);
 	$int=floor($float);
              unset($float);
 	$strNDigit=strNDigit(2, $int, 'fromBegin','0');
@@ -315,6 +352,7 @@ function сПреобразовать($_сСтрока, $_сНаправлени
 				"о29о"=> "\\",
 				"о30о"=> ";",
 				"о31о"=> "%",
+				"о31о"=> ":",
 			);
 	foreach($мПравилаПреобразования as $сПреобразованноВКоманду=>$сПодлежитПреобразованиюВКоманду)
 		{
@@ -462,17 +500,30 @@ function bIzEvent($_strEvent, $_strRequest)
 		}
 	return $bIzMutch;
 	}
-function strLinkGroove($_arrLinks, $_strGroove, $_strGrooveData='', $_bIzClearName=false)
+function arrEventLink($_arrParams, $_strGroove, $_strGrooveData='', $_bIzClearName=false)
 	{
+	$arr	=array();
+	if(is_array($_arrParams))
+		{
+		$arrLinks	=$_arrParams;
+			   unset($_arrParams);
+		}
+	else
+		{
+		$arrParams	=array();
+		}
 	$strGrooveData		=сПреобразовать($_strGrooveData, "вКоманду");
 					  unset($_strGrooveData);
-	$strLink='';
-	foreach($_arrLinks as $strName=>$strData)
+	$strEventLink	='';
+	$strEventParams	='';
+	$strEventParams='{';
+	foreach($arrParams as $strName=>$strData)
 		{
 		$strData=сПреобразовать($strData, "вКоманду");
 		if($strName==$_strGroove)
 			{
-			$strLink.='&'.$strName.'='.$strGrooveData;
+			$strEventLink	.='&'.$strName.'='.$strGrooveData;
+			//$strEventParams	.=$strName.':'.$strGrooveData.',';
 			}
 		else
 			{
@@ -480,10 +531,17 @@ function strLinkGroove($_arrLinks, $_strGroove, $_strGrooveData='', $_bIzClearNa
 				{
 				$strData='';
 				}
-			$strLink.='&'.$strName.'='.$strData;
+			$strEventLink	.='&'.$strName.'='.$strData;
+			//$strEventParams	.=$strName.':'.$strData.',';
 			}
 		}
-	return '?'.substr($strLink, 1);
+		$strEventParams=substr($strEventParams, 0, -1);
+		$strEventParams	.='}';
+
+		$arr['strHref']		='href=/search?'.substr($strLink, 1);
+		//$arr['strOnClick']	='onClick="'.$strEventParams.'";';
+		echo $arr['onClick'];
+	return $arr;
 	}
 //
 //	Управляющий сигнал
@@ -501,7 +559,7 @@ function strQuery($_strEvent, $_strRequest)
 
 function strSafeUsers($_strRequest)
 /*+1+*/	{
-/*+2+*/	return str_replace(array('%3C','%3E',"<",">",'о20о','о21о'), "_", $_strRequest);
+/*+2+*/	return str_replace(array('%3C','%3E',"<",">",'о20о','о21о', 'U+02C2', 'U+02C3', 'U+003E', 'U+003C'), "_", $_strRequest);
 /*+3+*/	}
 function strGetRequest()
 /*+4+*/	{
