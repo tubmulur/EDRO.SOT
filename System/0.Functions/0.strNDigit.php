@@ -49,12 +49,12 @@ function arrAllEventIncomeParametrsDefault()
 				),
 			'int0Page'	=>
 			array(
-				'default'	=>190,
+				'default'	=>0,
 				'maxLength'	=>6,
 				),
 			'int1OnPage'	=>
 			array(
-				'default'	=>60,
+				'default'	=>1,
 				'maxLength'	=>3,
 				'maxValue'	=>40,
 				),
@@ -62,6 +62,11 @@ function arrAllEventIncomeParametrsDefault()
 			array(
 				'default'	=>0,
 				'maxLength'	=>10,
+				),
+			'strPlayingStationStyle'=>
+			array(
+				'default'	=>'',
+				'maxLength'	=>65,
 				),
 			'strPlayingStationId'=>
 			array(
@@ -129,6 +134,34 @@ function сКодировка($с_Вход)
 		}
 	return $сКодировка;
 	}
+function нольЧИлиС($_сИмя, $_сДанные)
+	{
+	switch(strParType($_сИмя))
+		{
+		case 'int':
+			if($_сДанные=='')
+				{
+				$сВыход		=0;
+				}
+			else
+				{
+				$сВыход		=$_сДанные;
+				}
+		break;
+		case 'str':
+			if($_сДанные=='')
+				{
+				$сВыход		="''";
+				}
+			else
+				{
+				$сВыход		="'".str_replace("'","\'",$_сДанные)."'";
+				}
+		break;
+	    
+		}
+	return $сВыход;
+	}
 function сДляСравнения($с_Вход)
 	{
 //радостно слушающих музыку, по всему миру.
@@ -158,7 +191,7 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 	$сСлово		='';
 	if(empty($_сВход))
 		{
-		$мФраза[]='What are our styles?';
+		$мФраза[]='';
 		return $мФраза;
 		}
 
@@ -197,12 +230,13 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 			$сСлово		='';
 			}
 		}
+	
 	/*echo'<pre>';
 	print_r($мСлово);
 	echo'</pre>';*/
 	if(empty($мСлово))
 		{
-		$мСлово[]='';
+		$мСлово[]=$_сВход;
 		}
 	$мФраза=$мСлово;
 	//28 august 2020 Hfic Samin simplified solution. Will be beter next time. 
@@ -233,7 +267,8 @@ function intRoundUp($_float)
 	}
 function _Report($str)
 	{
-	echo '<warning style="color:red;">'.$str.'</warning>';
+	$strResult=date('Y-m-d_H:i:s').'<warning style="color:red;">'.$str.'</warning>';
+	file_put_contents('/home/HiFiIntelligentClub/temp/N0_report.txt' , $strResult);
 	}
 function strNDigit($_intN, $_str, $strPos="fromBegin", $_strNULLSymbol='_') //suffix/prefix
 	{
@@ -500,9 +535,10 @@ function bIzEvent($_strEvent, $_strRequest)
 		}
 	return $bIzMutch;
 	}
-function arrEventLink($_arrParams, $_strGroove, $_strGrooveData='', $_bIzClearName=false)
+function arrEventLink($_arrParams, $_strGroove, $_strGrooveData='', $_bIzClearName=false, $strPage=0)
 	{
-	$arr	=array();
+	$str;
+	
 	if(is_array($_arrParams))
 		{
 		$arrLinks	=$_arrParams;
@@ -510,37 +546,50 @@ function arrEventLink($_arrParams, $_strGroove, $_strGrooveData='', $_bIzClearNa
 		}
 	else
 		{
-		$arrParams	=array();
+		$arrLinks	=array();
 		}
-	$strGrooveData		=сПреобразовать($_strGrooveData, "вКоманду");
+	$strGrooveData		=$_strGrooveData;
+	$strGrooveDataCmd	=сПреобразовать($_strGrooveData, "вКоманду");
 					  unset($_strGrooveData);
-	$strEventLink	='';
-	$strEventParams	='';
-	$strEventParams='{';
-	foreach($arrParams as $strName=>$strData)
+	$strEventLink		='';
+	$strEventParams		='objEvent.arrParams={';
+	$strSearchParams	='';
+
+	foreach($arrLinks as $strName=>$strData)
 		{
-		$strData=сПреобразовать($strData, "вКоманду");
+		$strDataCmd	=сПреобразовать($strData, "вКоманду");
+		
 		if($strName==$_strGroove)
 			{
-			$strEventLink	.='&'.$strName.'='.$strGrooveData;
-			//$strEventParams	.=$strName.':'.$strGrooveData.',';
+			$strEventLink	.='&'.$strName.'='.$strGrooveDataCmd;
+			$strEventParams	.=$strName.':'.нольЧИлиС($strName, $strGrooveData).',';
 			}
 		else
 			{
+			if($strName=='int0Page')
+				{
+				$strData=0;
+				}
 			if($_bIzClearName&&$strName=='strName')
 				{
 				$strData='';
 				}
-			$strEventLink	.='&'.$strName.'='.$strData;
-			//$strEventParams	.=$strName.':'.$strData.',';
+			$strEventLink	.='&'.$strName.'='.$strDataCmd;
+			$strEventParams	.=$strName.':'.нольЧИлиС($strName, $strData).',';
 			}
 		}
-		$strEventParams=substr($strEventParams, 0, -1);
-		$strEventParams	.='}';
+		$strEventParams	=substr($strEventParams, 0, -1);
+		$strEventParams	.='};';
+		$strEventParams	.='objEvent._ActualizeSearch();';
+		$strEventParams	.='objEvent._UpdateURLDyn();';
+		$strEventParams	.='return false;';
+		$arr['strHref']		=' href="/search?'.substr($strEventLink, 1).'" ';
+		$arr['strOnClick']	=' onClick="'.$strEventParams.'" ';
 
-		$arr['strHref']		='href=/search?'.substr($strLink, 1);
-		//$arr['strOnClick']	='onClick="'.$strEventParams.'";';
-		echo $arr['onClick'];
+		//$arr['strHref']
+		//$arr['strOnClick']
+		// 'onClick="'.$strEventParams.'";';
+		//echo $arr['onClick'];
 	return $arr;
 	}
 //
@@ -773,8 +822,13 @@ function arrPrepare2($_strQuery, $_arrDataTypes=array())
 	}
 function strGetDomainName()
 	{
-	$strLang=preg_replace('/(.+)\.([a-zA-Z]{2,3})$/', '$2', $_SERVER['SERVER_NAME']);
+	$strLang=preg_replace('/(.+)\.([a-zA-Z]{2,7})$/', '$2', $_SERVER['SERVER_NAME']);
 	return $strLang;
+	}
+function strGetServerName()
+	{
+	$strName=preg_replace('/(http?://)(.+)\.([a-zA-Z]{2,3})$/', '$2', $_SERVER['SERVER_NAME']);
+	return $strName;
 	}
 function strGetDefaultLanguage()
 	{
@@ -783,7 +837,11 @@ function strGetDefaultLanguage()
 		{
 		$strDefaultLang='ru';
 		}
-	elseif($strZone=='en')
+	elseif($strZone=='onion')
+		{
+		$strDefaultLang='en';
+		}
+	elseif($strZone=='com')
 		{
 		$strDefaultLang='en';
 		}
@@ -793,11 +851,7 @@ function strGetDefaultLanguage()
 		}
 	return strtoupper($strDefaultLang);
 	}
-function strGetServerName()
-	{
-	$strName=preg_replace('/(http?://)(.+)\.([a-zA-Z]{2,3})$/', '$2', $_SERVER['SERVER_NAME']);
-	return $strName;
-	}
+
 function strParType($_strParName)
 	{
 	$strParName	=$_strParName;
@@ -846,6 +900,7 @@ function strArrayRec2JS($_arrParams, $_strLayerName='', $bIzFormat=false, $strFo
 		}
 	foreach($arrProcParams as $strName=>$tmtData)
 		{
+		$tmtData	=нольЧИлиС($strName, $tmtData);
 		$strType	=strParType($strName);
 		if($strType=='arr')
 			{
@@ -866,12 +921,13 @@ function strArrayRec2JS($_arrParams, $_strLayerName='', $bIzFormat=false, $strFo
 			$strArray	.=$bIzFormat?$strFormatLR:'';
 			}
 		}
+	$strArray	=substr($strArray, 0, -1);
 	return $strArray;
 	}
 function strArray2JS($_arrParams, $_strArrName='')
 	{
-	$bIzFormat	=false;
-	//$bIzFormat	=true;
+	//$bIzFormat	=false;
+	$bIzFormat	=true;
 	$strFormatLR	="\n".'<br/>';
 	$strArrName	=$_strArrName;
 		   unset($_strArrName);
@@ -879,7 +935,6 @@ function strArray2JS($_arrParams, $_strArrName='')
 	$str	.=$bIzFormat?$strFormatLR:'';
 	$str	.=strArrayRec2JS($_arrParams, '', $bIzFormat, $strFormatLR);
 	$str	.=$bIzFormat?$strFormatLR:'';
-
 
 	$str	=str_replace(','.$strFormatLR.'}', $strFormatLR.'}', $str);
 	return $str;
