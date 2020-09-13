@@ -8,7 +8,7 @@
 //[Vv]Event Global
 function сКлючь()
 	{
-	return 'ThisKeyWillBeChanged';
+	return 'ReallyNewAndInterestingKey';
 	}
 function arrAllEventIncomeActions()
 	{
@@ -71,7 +71,7 @@ function arrAllEventIncomeParametrsDefault()
 			'strPlayingStationId'=>
 			array(
 				'default'	=>'',
-				'maxLength'	=>100,
+				'maxLength'	=>150,
 				)
 			)
 		);
@@ -194,14 +194,15 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 		$мФраза[]='';
 		return $мФраза;
 		}
-
-	$ч1Длинна	=strlen($_сВход);
+	$сВход		=$_сВход.' ';
+	$ч1Длинна	=strlen($сВход);
+	$ч0Длинна	=($ч1Длинна-1);
 
 	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
 		{
-		$сСлово.=$_сВход[$ч0Шаг];
+		$сСлово.=$сВход[$ч0Шаг];
 
-		if($ч0Шаг!=0&&$_сВход[$ч0Шаг]==" ")
+		if($ч0Шаг!=0&&($сВход[$ч0Шаг]==" "||$сВход[$ч0Шаг]=="."))
 			{
 			$сСлово		=substr($сСлово,0,-1);
 			if(in_array($сСлово, $мСлово))
@@ -234,10 +235,10 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 	/*echo'<pre>';
 	print_r($мСлово);
 	echo'</pre>';*/
-	if(empty($мСлово))
+	/*if(empty($мСлово))
 		{
 		$мСлово[]=$_сВход;
-		}
+		}*/
 	$мФраза=$мСлово;
 	//28 august 2020 Hfic Samin simplified solution. Will be beter next time. 
 	//I doo my fast, as fast as possible. Extra fast. Extra thrust. 
@@ -245,6 +246,64 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 	//Today is the last day. So it will not end without update packege. 
 	//Make it good. We too.
 	return $мФраза;
+	}
+function мСобратьO2o($_сВход) // Слово
+	{
+	$мСлово		=array();
+	$сСлово		='';
+	if(empty($_сВход))
+		{
+		$мСлово[]='';
+		return $мСлово;
+		}
+
+	$ч1Длинна	=strlen($_сВход);
+	$ч0Длинна	=($ч1Длинна-1);
+
+	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
+		{
+		$сСлово.=$_сВход[$ч0Шаг];
+		//echo $ч0Шаг;
+		//echo '<br>';
+		if($ч0Шаг!=0&&($_сВход[$ч0Шаг]=="_"||$_сВход[$ч0Шаг]=="."))
+			{
+			$сСлово		=substr($сСлово,0,-1);
+			$мСлово[]	=$сСлово;
+			$сСлово		='';
+			//echo $ч0Шаг;
+			//echo '<br>';
+			}
+		if($ч0Шаг==$ч0Длинна)
+			{
+			$мСлово[]	=$сСлово;
+			}
+		}
+	return $мСлово;
+	}
+function чРосХэш($_сВход) // 
+	{//© A.A.CheckMaRev assminog@gmail.com tubmulur@yandex.ru 2020
+	$мСлово		=array();
+	$сСлово		='';
+	if($_сВход==='')
+		{
+		return 0;
+		}
+
+	$ч1Длинна	=strlen($_сВход);
+	$ч0Длинна	=($ч1Длинна-1);
+	$чСумма		=0;
+
+	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
+		{
+		$чСумма		=($чСумма+ord($_сВход[$ч0Шаг]));
+
+		if(($ч0Шаг!=0&&$_сВход[$ч0Шаг]==" ")||($ч0Шаг==$ч0Длинна))
+			{
+			$чХэш		.=$чСумма.'Ф';
+			$чСумма		=0;
+			}
+		}
+	return $чХэш;
 	}
 function intRoundUp($_float)
 	{
@@ -267,6 +326,7 @@ function intRoundUp($_float)
 	}
 function _Report($str)
 	{
+	//echo$str;
 	$strResult=date('Y-m-d_H:i:s').'<warning style="color:red;">'.$str.'</warning>';
 	file_put_contents('/home/HiFiIntelligentClub/temp/N0_report.txt' , $strResult);
 	}
@@ -570,10 +630,10 @@ function arrEventLink($_arrParams, $_strGroove, $_strGrooveData='', $_bIzClearNa
 				{
 				$strData=0;
 				}
-			if($_bIzClearName&&$strName=='strName')
+			/*if($_bIzClearName&&$strName=='strName')
 				{
 				$strData='';
-				}
+				}*/
 			$strEventLink	.='&'.$strName.'='.$strDataCmd;
 			$strEventParams	.=$strName.':'.нольЧИлиС($strName, $strData).',';
 			}
@@ -667,7 +727,7 @@ function arrEventParams2Array($_strQuery)
 		$arrBeforeValidate		=arrPrepare2($strQuery);
 		$strParamName			=$arrBeforeValidate[0];
 		$strParamValue			=$arrBeforeValidate[1];
-		$arrResult[$strParamName]	=urldecode(сПреобразовать($strParamValue, "вСтроку"));
+		$arrResult[$strParamName]	=urldecode(urldecode(сПреобразовать($strParamValue, "вСтроку")));
 		if(strpos($arrResult[$strParamName],'27'))
 			{
 			echo $arrResult[$strParamName];
@@ -717,7 +777,8 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 /* N  */		if(strlen($arrIncome[$strAction])>$arrDefault[$strAction]['maxLength'])
 /* T  */			{
 /*    */			 _Report($arrIncome[$strAction].'length>'.$arrDefault[$strAction]['maxLength']);
-/* I  */			exit;
+				$arrResult[$strAction]	=substr($arrIncome[$strAction],0, $arrDefault[$strAction]['maxLength']);
+/* I  */	
 /* N  */			}
 /* C  */		else
 /* O  */			{
@@ -732,8 +793,8 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 /* N  */else
 /*    */	{
 /*    */		_Report($strAction.' is not exist');
-/*    */	exit;
-/*    */	}
+/*    */	//exit;
+/*    */	}	
 
 	unset($strAction);
 	      $strAction	='arrParams';
@@ -757,7 +818,8 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 					if(strlen($arrIncome[$strAction][$strIncomeName])>$arrDefault[$strAction][$strDefaultName]['maxLength'])
 						{
 						 _Report($arrIncome[$strAction][$strIncomeName].'length>'.$arrDefault[$strAction][$strDefaultName]['maxLength']);
-						exit;
+						$arrIncome[$strAction][$strIncomeName]	=substr($arrIncome[$strAction][$strIncomeName],0, $arrDefault[$strAction][$strDefaultName]['maxLength']);
+				
 						}
 
 						//echo $strDefaultName.' '.$strIncomeName.' '.$strIncomeValue;
@@ -943,9 +1005,12 @@ function _DropTheSessionDust()
 	{
 	if(isset($_SESSION)&&isset($_SESSION['strListener'])&&(!empty($_SESSION['strListener'])))
 	/*+1+*/	{
-	/*+2+*/	$str				=strSafeUsers(substr($_SESSION['strListener'],0, 15));
-	/*+3+*/				          unset($_SESSION);
-	/*+4+*/	$_SESSION['strListener']	=$str;
-	/*+5+*/	}
+		//print_r($_SESSION);
+	/*+2+*/	$strListener			=strSafeUsers(substr($_SESSION['strListener'],0, 15));
+	/*+3+*/	$strPlayingStationId		=strSafeUsers(substr($_SESSION['strPlayingStationId'],0, 55));
+	/*+4+*/				          unset($_SESSION);
+	/*+5+*/	$_SESSION['strListener']		=$strListener;
+	/*+6+*/	$_SESSION['strPlayingStationId']	=$strPlayingStationId;
+	/*+7+*/	}
 	}
 ?>
