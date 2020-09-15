@@ -31,7 +31,7 @@ else
 		<meta name="apple-mobile-web-app-capable"	content="yes"/>
 		<meta name="apple-mobile-web-app-title"		content="HiFiIntelligentClub">
 
-		<meta http-equiv="expires"			content="Thu, 10 september 2020 23:58:00 GMT"/>
+		<meta http-equiv="expires"			content="Fri, 11 september 2020 23:08:00 GMT"/>
 		<meta http-equiv="Content-type"			content="text/html; charset=utf-8"/>
 
 		<meta name="milliseconds"			content=".1282">
@@ -50,6 +50,8 @@ else
 			echo						    EDRO::strObjectDeclare();
 			echo						    EDRO::strObjectInit();
 			echo						   Event::strObjectDeclare();
+			echo 						 Objects::strAudioDeclare();
+			echo 						 Objects::strCopyrightDeclare();
 			echo					          Design::strObjectDeclare();
 			echo						 Reality::strObjectDeclare();
 			echo						 Objects::strObjectDeclare();
@@ -65,69 +67,18 @@ else
 		id="HiFiIntelligentClub"
 		style="
 			position		:fixed;
-			display			:block;
-			overflow		:hidden;
 			top			:0;
 			left			:-0px;
 			width			:100vw;
-			height			:89.8vh;
+			height			:100vh;
 			margin			:0;
 			padding			:0;
-			/* background-repeat	:no-repeat;
-			background-size		:99vw;
-			background-position	:0vw 14vh;
-			background-color	:#FFF; */
-			overflow		:hidden;
 			"
 		>
-
-
-		<!--debugWindow
-			class="V2 fixed block layer_4_1 scrollerY no-select"
-			style="
-				font-size		:xx-small;
-				width			:100%;
-				height			:20px;
-				background-color	:white;
-				"
-			>
-			<heading 
-				class="block left no-select" 
-				style="
-					color:#fff;
-					margin-right:2px;
-					background-color:red;
-					"
-				>
-				vKIIM: 
-			</heading>
-			<strdata 
-				id="strPlayerPlayEventsDebugString"
-				class="block  left  no-select"
-				>
-			</strdata>
-
-		</debugWindow-->
-		<copyright
-			id="PageCopyrightTag"
-			class="BC3 TC3 layer_5_Nav"
-			style="
-				position	:fixed;
-				bottom		:0vh;
-				left		:0;
-				width		:100%;
-				height		:20px;
-				text-align	:center;
-				font-size	:small;
-				"
-			>
-			HiFiIntelligentClub.<?=strGetDomainName()?> © tubmulur@yandex.ru 2020
-		</copyright>
-		<script>
-			var oEl=document.getElementById("PageCopyrightTag");
-		</script>
-		<?=SystemEventIndicatorStream::strHTML();?>
-		<?=Event::strObjectInit();?> 
-		<?=Reality::strObjectInit()?>
-		<?=VectorKIIM_elementWaiting4Event_statisticalMembrane::strObjectInit();?>
-		<?=$strKIIMWindowHTML?>
+		<?php
+		echo SystemEventIndicatorStream::strHTML();
+		echo Event::strObjectInit();
+		echo Reality::strObjectInit();
+		echo VectorKIIM_elementWaiting4Event_statisticalMembrane::strObjectInit();
+		echo $strKIIMWindowHTML;
+		?>
