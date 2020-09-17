@@ -10,20 +10,30 @@ function сКлючь()
 	{
 	return 'ReallyNewAndInterestingKey';
 	}
-function arrAllEventIncomeActions()
+/*function arrAllEventIncomeActions()
 	{
-	return	array(
-		'/','/search','/Hfic_Samin.jpg','/favicon.ico','/getStation','/ServerOnline','/listeners','/robots.txt'
-		);
-	}
+	return	;
+	}*/
 function arrAllEventIncomeParametrsDefault()
 	{
 	$arrAllIncome	=
 	array(
-		'strAction'=>
+		'arrAction'=>
 		array(
+			'arrAllowed'=>
+			array(
+				'/',
+				'/search',
+				'/Hfic_Samin.jpg',
+				'/favicon.ico',
+				'/getStation',
+				'/ServerOnline',
+				'/listeners',
+				'/robots.txt',
+				'/HiFiIntelligentClub.tar.gz'
+				),
 			'default'	=>'/',
-			'maxLength'	=>20,
+			'maxLength'	=>28,
 			),
 		'arrParams'=>
 		array(
@@ -280,6 +290,57 @@ function мСобратьO2o($_сВход) // Слово
 		}
 	return $мСлово;
 	}
+function сДоСимвола($_сВход, $с_Символ='?') // Слово
+	{
+	$сСлово		='';
+	if(empty($_сВход))
+		{
+		$сСлово='';
+		return $сСлово;
+		}
+
+	$ч1Длинна	=strlen($_сВход);
+	$ч0Длинна	=($ч1Длинна-1);
+
+	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
+		{
+		$сСлово.=$_сВход[$ч0Шаг];
+
+		if($ч0Шаг!=0&&($_сВход[$ч0Шаг]==$с_Символ))
+			{
+			$сСлово		=substr($сСлово,0,-1);
+			return $сСлово;
+			}
+		else
+			{
+			}
+		}
+
+	return $сСлово;
+	}
+function сОтСимвола($_сВход, $с_Символ='?') // Слово
+	{
+	$сСлово		='';
+	$фСимволНайден	=false;
+	if(empty($_сВход)){$сСлово='';return $сСлово;}
+
+	$ч1Длинна	=strlen($_сВход);
+	$ч0Длинна	=($ч1Длинна-1);
+
+	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
+		{
+		if($_сВход[$ч0Шаг]==$с_Символ)
+			{
+			$фСимволНайден	=true;
+			}
+		if($фСимволНайден)
+			{
+			$сСлово		.=$_сВход[$ч0Шаг];
+			}
+		}
+
+	return $сСлово;
+	}
 function чРосХэш($_сВход) // 
 	{//© A.A.CheckMaRev assminog@gmail.com tubmulur@yandex.ru 2020
 	$мСлово		=array();
@@ -328,7 +389,7 @@ function _Report($str)
 	{
 	//echo$str;
 	$strResult=date('Y-m-d_H:i:s').'<warning style="color:red;">'.$str.'</warning>';
-	file_put_contents('/home/HiFiIntelligentClub/temp/N0_report.txt' , $strResult);
+	file_put_contents('/home/HiFiIntelligentClub.Ru/temp/N0_report.txt' , $strResult);
 	}
 function strNDigit($_intN, $_str, $strPos="fromBegin", $_strNULLSymbol='_') //suffix/prefix
 	{
@@ -666,21 +727,24 @@ function strQuery($_strEvent, $_strRequest)
 	return substr($strQurey,1);
 	}
 
-function strSafeUsers($_strRequest)
-/*+1+*/	{
-/*+2+*/	return str_replace(array('%3C','%3E',"<",">",'о20о','о21о', 'U+02C2', 'U+02C3', 'U+003E', 'U+003C'), "_", $_strRequest);
-/*+3+*/	}
-function strGetRequest()
-/*+4+*/	{
-/*+5+*/	$strRequest= strSafeUsers($_SERVER['REQUEST_URI']);
+/*!*/function strSafeUsers($_strRequest)
+/*!*//*+1+*/	{
+/*!*//*+2+*/	return str_replace(array('%3C','%3E',"<",">",'о20о','о21о', 'U+02C2', 'U+02C3', 'U+003E', 'U+003C'), "_", $_strRequest);
+/*!*//*+3+*/	}
+/*!*/function strGetRequest()
+/*!*//*+4+*/	{
+/*!*//*+5+*/	$strRequest= strSafeUsers($_SERVER['REQUEST_URI']);
 /*+6+*/	return $strRequest;
-/*+7+*/	}
-function _ExitOnUndefunedAction($_strIncomeName)
+/*!*//*+7+*/	}
+/*!*/
+/*function _ExitOnUndefunedAction($_strIncomeName)
 	{
 	$strIncomeName		=$_strIncomeName;
 			   unset($_strIncomeName);
 	$bHasAction	=false;
-	foreach(arrAllEventIncomeActions() as $strExistName)
+	$arrDefaultIncomeParams	=arrAllEventIncomeParametrsDefault();
+
+	foreach($arrDefaultIncomeParams['arrAction'] as $strExistName)
 		{
 		if($strIncomeName==$strExistName)
 			{
@@ -692,25 +756,35 @@ function _ExitOnUndefunedAction($_strIncomeName)
 		_Report($strIncomeName.' is not exist in the system;');
 		exit;
 		}
-	}
+	}*/
 function arrGetEventSetter()
 /*!0!*/{
 /*!1!*/$arrEvent			=array();
 /*!2!*/$arrEvent['strAction']		='';
 /*!3!*/$arrEvent['arrParams']		=array();
 /*!4!*/
+
 /*!5!*/$strRequest			=strGetRequest();
-/*!6!*/
-/*!7!*/$arrEvent['strAction']		=preg_replace('/^(\/.*)(\?.*)$/','$1', $strRequest);
-	$arrEvent['strAction']		=urldecode($arrEvent['strAction']);
+
+/*!6!*/$arrEvent['strAction']		=сДоСимвола($strRequest, '?');
+
+
 /*!8!*/		/*!!!!*/	/*!!!!*/
-/*!9+*/	_ExitOnUndefunedAction($arrEvent['strAction']); //For small low cost setup*/
+/*!9+*/	//_ExitOnUndefunedAction($arrEvent['strAction']); //For small low cost setup*/
 /*!10*/		/*!!!!*/	/*!!!!*/
-/*!11*/$strEventParams			=substr(preg_replace('/^(\/.*)(\?.*)$/','$2', $strRequest),1);
+
+/*!11*/$strEventParams			=сОтСимвола($strRequest, '?');
+
 /*!12*/$arrEvent['arrParams']		=arrEventParams2Array($strEventParams);
+
 /*13+*/$arrEvent			=arrRestrictAndReportActionAndParametrs($arrEvent); //For URLID 1mln+ mode
+//	echo '<pre>';
+//	print_r($arrEvent);
+//	echo '</pre>';
+//
 /*	echo'<script>'.$arrEvent['arrParams'].'</script>';
 	echo'<script>objEvent._UpdateURLDyn()</script>';*/
+
 /*14!*/return $arrEvent;
 /*15!*/}
 function arrEventParams2Array($_strQuery)
@@ -749,9 +823,7 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 
 	$arrResult	=array();
 	$arrDefault	=arrAllEventIncomeParametrsDefault();
-	/*echo '<pre>';
-	print_r($arrDefault);
-	echo '</pre>';*/
+;
 
 	if(is_array($_arrIncome))
 		{
@@ -766,23 +838,23 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 				   unset($_strReplaceName);
 	$strReplaceValue		=$_strReplaceValue;
 				   unset($_strReplaceValue);
-	//print_r($arrDefault['strAction']);
+	//print_r($arrDefault['arrAction']);
 	//print_r($arrIncome);
 
-/*    */$strAction	='strAction';
-/*    */if(isset($arrIncome[$strAction])&&!empty($arrIncome[$strAction])&&isset($arrDefault[$strAction])&&!empty($arrDefault[$strAction])&&is_array($arrDefault[$strAction]))
+/*    */$strAction	='arrAction';
+/*    */if(isset($arrIncome['strAction'])&&!empty($arrIncome['strAction'])&&isset($arrDefault[$strAction])&&!empty($arrDefault[$strAction])&&is_array($arrDefault[$strAction])&&in_array($arrIncome['strAction'], $arrDefault[$strAction]['arrAllowed']))
 /* E  */	{
 /* V  */	if(isset($arrDefault[$strAction]['maxLength']))
 /* E  */		{
-/* N  */		if(strlen($arrIncome[$strAction])>$arrDefault[$strAction]['maxLength'])
+/* N  */		if(strlen($arrIncome['strAction'])>$arrDefault[$strAction]['maxLength'])
 /* T  */			{
-/*    */			 _Report($arrIncome[$strAction].'length>'.$arrDefault[$strAction]['maxLength']);
-				$arrResult[$strAction]	=substr($arrIncome[$strAction],0, $arrDefault[$strAction]['maxLength']);
+/*    */			 _Report($arrIncome['strAction'].'length>'.$arrDefault[$strAction]['maxLength']);
+				$arrResult['strAction']	=substr($arrIncome['strAction'],0, $arrDefault[$strAction]['maxLength']);
 /* I  */	
 /* N  */			}
 /* C  */		else
 /* O  */			{
-/* M  */			$arrResult[$strAction]	=$arrIncome[$strAction];
+/* M  */			$arrResult['strAction']	=$arrIncome['strAction'];
 /* E  */			}
 /*    */		}
 /* A  */	else
@@ -792,9 +864,12 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 /* O  */	}
 /* N  */else
 /*    */	{
-/*    */		_Report($strAction.' is not exist');
+/*    */		_Report($strAction.' is not in allowed list');
 /*    */	//exit;
-/*    */	}	
+/*    */	}
+	//echo '<pre>';
+	//print_r($arrResult);
+	//echo '</pre>';
 
 	unset($strAction);
 	      $strAction	='arrParams';
