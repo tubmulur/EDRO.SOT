@@ -40,7 +40,7 @@ function arrAllEventIncomeParametrsDefault()
 			'strName'	=>
 			array(
 				'default'	=>'',
-			'maxLength'	=>100,
+				'maxLength'	=>100,
 				),//
 			'strStyle'	=>
 			array(
@@ -132,27 +132,7 @@ function мФразы($_сФраза) /* Could be inputed by anyone and after th
 	return $м;
 	*/
 	}
-function фУникальный($мОбработанныеСвойства, $_сТекущееСвойство)
-	{
-	$ф=TRUE;
-	$сТекущееСвойство	=trim($_сТекущееСвойство);
-	foreach($мОбработанныеСвойства as $сОбработанноеСвойство)
-		{
-		//echo$сОбработанноеСвойство."\n";
-		//echo$сТекущееСвойство."\n"."\n";
-		if($сОбработанноеСвойство==$сТекущееСвойство)
-			{
-			//echo $сОбработанноеСвойство."\n";
-			//echo $сТекущееСвойство."\n"."\n";
-			return FALSE;
-			}
-		else
-			{
-			$ф=TRUE;
-			}
-		}
-	return $ф;
-	}
+
 function сКодировка($с_Вход)
 	{
 	$чВыход	=FALSE;
@@ -215,32 +195,68 @@ function сДляСравнения($с_Вход)
 		//My figure prefere the first one.  Hfic.Samin. 2020
 	return strtolower($с_Вход);
 	}
-function мСобратьФразы($_сВход, $_сБолМал='Нетрог') //'Бол'/'Мал'/'Нетрог'/'МалДиректор'
+function фУникальный($мОбработанныеСвойства, $_сТекущееСвойство)
 	{
-	$мСлово		=array();
-	$мФраза		=array();
-	$сСлово		='';
-	if(empty($_сВход))
+	$ф=TRUE;
+	if(empty($мОбработанныеСвойства))
 		{
-		$мФраза[]='';
-		return $мФраза;
+		return TRUE;
 		}
-	$сВход		=trim($_сВход).' ';
+	//print_r($мОбработанныеСвойства);
+	$сТекущееСвойство	=trim($_сТекущееСвойство);
+				unset($_сТекущееСвойство);
+	foreach($мОбработанныеСвойства as $сОбработанноеСвойство)
+		{
+		if($сОбработанноеСвойство==$сТекущееСвойство)
+			{
+			//echo'$сОбработанноеСвойство:';
+			//echo$сОбработанноеСвойство."\n";
+			//echo'$сТекущееСвойство:';
+			//echo$сТекущееСвойство."\n"."\n";
+			//echo $сОбработанноеСвойство."\n";
+			//echo $сТекущееСвойство."\n"."\n";
+			return FALSE;
+			}
+		else
+			{
+			$ф=TRUE;
+			}
+		}
+	return $ф;
+	}
+function мСобратьФразы($_сВход, $_сБолМал='Нетрог') // 'Бол'/'Мал'/'Нетрог'/'МалДиректор'
+	{
+	$мКоррекорФразы	=array(
+			'R&B'=>array(
+				'rnb', 'r and b', "r'n'b"
+				),
+			"Drum'n'Bass"=>array(
+				'dnb', 'd&b','d and b', "d'n'b", "drum and bass", "drum&bass", "drum n bass" , "drum n base", "drum and base", "drum&base"
+				),
+			);
+	$сВход		=trim($_сВход);
+	foreach($мКоррекорФразы as  $сПравильно=>$мНеПравильно)
+		{
+		$сВход	=str_replace($мНеПравильно, $сПравильно, strtolower($сВход));
+		}
+	$сВход		=$сВход.' ';
+		        unset($_сВход);
+	$мСлово		=array();
+
 	$ч1Длинна	=strlen($сВход);
 	$ч0Длинна	=($ч1Длинна-1);
 
-	for($ч0Шаг=0;$ч0Шаг<$ч1Длинна;$ч0Шаг++)
+	$сСлово		='';
+	for($ч0Шаг=0;$ч0Шаг<=$ч0Длинна;$ч0Шаг++)
 		{
 		$сСлово.=$сВход[$ч0Шаг];
-
 		if($ч0Шаг!=0&&($сВход[$ч0Шаг]==" "||$сВход[$ч0Шаг]=="."))
 			{
 			$сСлово		=substr($сСлово,0,-1);
-			//if(in_array($сСлово, $мСлово))
-			if(фУникальный($мСлово, $сСлово)===TRUE)
+			
+			if(фУникальный($мСлово, $сСлово)!==TRUE)
 				{
 				//echo'Дубль!'."\n";
-				//Дубль
 				}
 			else
 				{
@@ -262,22 +278,14 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 				}
 			$сСлово		='';
 			}
+		
 		}
-	
-	/*echo'<pre>';
-	print_r($мСлово);
-	echo'</pre>';*/
-	/*if(empty($мСлово))
-		{
-		$мСлово[]=$_сВход;
-		}*/
-	$мФраза=$мСлово;
 	//28 august 2020 Hfic Samin simplified solution. Will be beter next time. 
 	//I doo my fast, as fast as possible. Extra fast. Extra thrust. 
 	//Trust no one. Dj will save my soul today for vacancies. I hope it will....  :) 
 	//Today is the last day. So it will not end without update packege. 
 	//Make it good. We too.
-	return $мФраза;
+	return $мСлово;
 	}
 function мСобратьO2o($_сВход) // Слово
 	{
@@ -411,7 +419,7 @@ function _Report($str)
 	{
 	//echo$str;
 	$strResult=date('Y-m-d_H:i:s').'<warning style="color:red;">'.$str.'</warning>';
-	file_put_contents('/home/HiFiIntelligentClub.Ru/temp/N0_report.txt' , $strResult);
+	file_put_contents('/home/HiFiIntelligentClub.Ru/temp/N0_report.txt' , $strResult, FILE_APPEND);
 	}
 function strNDigit($_intN, $_str, $strPos="fromBegin", $_strNULLSymbol='_') //suffix/prefix
 	{
