@@ -8,7 +8,7 @@
 //[Vv]Event Global
 function сКлючь()
 	{
-	return 'ReallyNewAndInterestingKey';
+	return '4aPrIsAForaPr_MeansPR_4ChekmarevAA[4AA]';
 	}
 /*function arrAllEventIncomeActions()
 	{
@@ -132,6 +132,27 @@ function мФразы($_сФраза) /* Could be inputed by anyone and after th
 	return $м;
 	*/
 	}
+function фУникальный($мОбработанныеСвойства, $_сТекущееСвойство)
+	{
+	$ф=TRUE;
+	$сТекущееСвойство	=trim($_сТекущееСвойство);
+	foreach($мОбработанныеСвойства as $сОбработанноеСвойство)
+		{
+		//echo$сОбработанноеСвойство."\n";
+		//echo$сТекущееСвойство."\n"."\n";
+		if($сОбработанноеСвойство==$сТекущееСвойство)
+			{
+			//echo $сОбработанноеСвойство."\n";
+			//echo $сТекущееСвойство."\n"."\n";
+			return FALSE;
+			}
+		else
+			{
+			$ф=TRUE;
+			}
+		}
+	return $ф;
+	}
 function сКодировка($с_Вход)
 	{
 	$чВыход	=FALSE;
@@ -204,7 +225,7 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 		$мФраза[]='';
 		return $мФраза;
 		}
-	$сВход		=$_сВход.' ';
+	$сВход		=trim($_сВход).' ';
 	$ч1Длинна	=strlen($сВход);
 	$ч0Длинна	=($ч1Длинна-1);
 
@@ -215,7 +236,8 @@ function мСобратьФразы($_сВход, $_сБолМал='Нетрог
 		if($ч0Шаг!=0&&($сВход[$ч0Шаг]==" "||$сВход[$ч0Шаг]=="."))
 			{
 			$сСлово		=substr($сСлово,0,-1);
-			if(in_array($сСлово, $мСлово))
+			//if(in_array($сСлово, $мСлово))
+			if(фУникальный($мСлово, $сСлово)===TRUE)
 				{
 				//echo'Дубль!'."\n";
 				//Дубль
@@ -487,7 +509,7 @@ function strNDigitMicroTrace($_int)
 	}
 function сПреобразовать($_сСтрока, $_сНаправление="вСтроку") //:вСтроку/вКоманду
 	{
-	$сСтрока		=$_сСтрока;
+	$сСтрока		=trim($_сСтрока);
 
 	if($_сНаправление=='вСтроку'||$_сНаправление=='вКоманду')
 		{
@@ -842,7 +864,7 @@ function arrRestrictAndReportActionAndParametrs($_arrIncome, $_strReplaceName=''
 	//print_r($arrIncome);
 
 /*    */$strAction	='arrAction';
-/*    */if(isset($arrIncome['strAction'])&&!empty($arrIncome['strAction'])&&isset($arrDefault[$strAction])&&!empty($arrDefault[$strAction])&&is_array($arrDefault[$strAction])&&in_array($arrIncome['strAction'], $arrDefault[$strAction]['arrAllowed']))
+/*    */if(isset($arrIncome['strAction'])&&!empty($arrIncome['strAction'])&&isset($arrDefault[$strAction])&&!empty($arrDefault[$strAction])&&is_array($arrDefault[$strAction])&&фУникальный($arrDefault[$strAction]['arrAllowed'], $arrIncome['strAction']))
 /* E  */	{
 /* V  */	if(isset($arrDefault[$strAction]['maxLength']))
 /* E  */		{
